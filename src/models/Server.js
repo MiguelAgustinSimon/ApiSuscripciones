@@ -10,9 +10,9 @@ class Server {
         this.app = express();
     
         if (process.env.STAGE == "PROD") {
-            this.port = process.env.PORT || 3001;
+            this.port = process.env.PORT || 8000;
         } else {
-            this.port = 3001;
+            this.port = 8000;
         }
     
         //Connect to database
