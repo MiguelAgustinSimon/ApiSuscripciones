@@ -4,6 +4,6 @@
 const Server=require('./src/models/Server');
 const server = new Server();
 
-server.listen();
+server.listen(8000, '0.0.0.0');
 
 //Arrancar api: npm run serve
