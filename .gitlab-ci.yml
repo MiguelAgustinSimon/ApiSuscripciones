@@ -1,0 +1,4 @@
+include:
+  - project: 'errepar_sa1/mi-estudio/development/templates/ci'
+    file: gitflow-nodejs-full.gitlab-ci.yml
+    ref: v1.1
