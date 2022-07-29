@@ -27,11 +27,9 @@ const Op = Sequelize.Op;
 // }
 
 const getProducts = async (req, res) => {
-    // const pageAsNumber=Number.parseInt(req.query.page);
-    // const sizeAsNumber=Number.parseInt(req.query.size);
-    const pageAsNumber=Number.parseInt(req.headers["page"]);
-    const sizeAsNumber=Number.parseInt(req.headers["size"]);
-
+    const pageAsNumber=Number.parseInt(req.query.page);
+    const sizeAsNumber=Number.parseInt(req.query.size);
+   
     let page=0;
     let size=10;
     if(!Number.isNaN(pageAsNumber)&& pageAsNumber>0){
