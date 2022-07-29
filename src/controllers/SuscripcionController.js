@@ -8,7 +8,6 @@ const {logger}=require("../models/Logger");
 const UUIDChecker = require("../middlewares/UUIDChecker");
 const NullChecker = require("../middlewares/NullChecker");
 
-
 const Op = Sequelize.Op;
 // ---------------------------------------------------- RUTAS GET--------------------------------------------------------------
 
@@ -28,10 +27,10 @@ const Op = Sequelize.Op;
 // }
 
 const getProducts = async (req, res) => {
-    const pageAsNumber=Number.parseInt(req.query.page);
-    const sizeAsNumber=Number.parseInt(req.query.size);
-    // const pageAsNumber=Number.parseInt(req.headers["page"]);
-    // const sizeAsNumber=Number.parseInt(req.headers["size"]);
+    // const pageAsNumber=Number.parseInt(req.query.page);
+    // const sizeAsNumber=Number.parseInt(req.query.size);
+    const pageAsNumber=Number.parseInt(req.headers["page"]);
+    const sizeAsNumber=Number.parseInt(req.headers["size"]);
 
     let page=0;
     let size=10;
@@ -55,17 +54,17 @@ const getProducts = async (req, res) => {
         //include:[{model:modeloProductoSuscripcion}]
     })
     .then((lista)=>{
-        logger.info(`ProductScope: getProducts ok`);
+        logger.info(`getProducts ok`);
         res.status(200).json(lista);
     })
    .catch( (error)=>{
-        logger.error(`ProductScope: getProducts error: ${error.message}`);
+        logger.error(`getProducts error: ${error.message}`);
         res.json({error:error});
     })
 }
 
 
-// Todas las suscripciones por Suscriptor
+//Todas las suscripciones por Suscriptor
 const getSubscriberSuscriptionCommProduct= async (req, res) => {
     const {subscriber_id}= req.params;
 
@@ -76,7 +75,7 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
     let product_id= req.query.product_id;
  
     if(!UUIDChecker(subscriber_id)){
-        logger.warn(`ProductScope: getSubscriberSuscriptionCommProduct: Ingrese un UUID valido: ${subscriber_id}`);
+        logger.warn(`getSubscriberSuscriptionCommProduct: Ingrese un UUID valido: ${subscriber_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
@@ -115,16 +114,16 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
    })
    .then( (data)=>{
        if(data){
-            logger.info(`ProductScope: getSubscriberSuscriptionCommProduct ok`);
-            return res.status(200).json(data);
+            logger.info(`getSubscriberSuscriptionCommProduct ok`);
+            return res.json(data);
        }
        else{
-            logger.warn(`ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados`);
+            logger.warn(`getSubscriberSuscriptionCommProduct: Datos no encontrados`);
            return res.status(404).json({message: "Datos no encontrados."})
        }
    })
   .catch( (error)=>{
-        logger.error(`ProductScope: getSubscriberSuscriptionCommProduct error: ${error.message}`);
+        logger.error(`getSubscriberSuscriptionCommProduct error: ${error.message}`);
        res.json({error:error.message});
    });
 }
@@ -137,7 +136,7 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
     let where={};
 
     if(!UUIDChecker(product_id)){
-        logger.warn(`ProductScope: getBySuscriptionProductIdCommProduct: Ingrese un UUID valido: ${product_id}`);
+        logger.warn(`getBySuscriptionProductIdCommProduct: Ingrese un UUID valido: ${product_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
@@ -158,16 +157,16 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
    })
    .then( (data)=>{
        if(data){
-            logger.info(`ProductScope: getBySuscriptionProductIdCommProduct ok`);
-            return res.status(200).json(data);
+            logger.info(`getBySuscriptionProductIdCommProduct ok`);
+            return res.json(data);
        }
        else{
-            logger.warn(`ProductScope: getBySuscriptionProductIdCommProduct: Datos no encontrados`);
+            logger.warn(`getBySuscriptionProductIdCommProduct: Datos no encontrados`);
             return res.status(404).json({message: "Datos no encontrados."})
        }
    })
   .catch( (error)=>{
-        logger.error(`ProductScope: getBySuscriptionProductIdCommProduct error: ${error.message}`);
+        logger.error(`getBySuscriptionProductIdCommProduct error: ${error.message}`);
         res.json({error:error.message});
    });
 }
@@ -178,7 +177,7 @@ const getProductCommProduct= async (req, res) => {
     const {product_id}= req.params;
 
     if(!UUIDChecker(product_id)){
-        logger.warn(`ProductScope: getProductCommProduct: Ingrese un UUID valido: ${product_id}`);
+        logger.warn(`getProductCommProduct: Ingrese un UUID valido: ${product_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
@@ -187,16 +186,16 @@ const getProductCommProduct= async (req, res) => {
    })
    .then( (data)=>{
        if(data){
-            logger.info(`ProductScope: getProductCommProduct ok`);
+            logger.info(`getProductCommProduct ok`);
             return res.json(data);
        }
        else{
-            logger.warn(`ProductScope: getProductCommProduct: Datos no encontrados`);
+            logger.warn(`getProductCommProduct: Datos no encontrados`);
             return res.status(404).json({message: "Datos no encontrados."})
        }
    })
   .catch( (error)=>{
-        logger.error(`ProductScope: getProductCommProduct error: ${error.message}`);
+        logger.error(`getProductCommProduct error: ${error.message}`);
         res.json({error:error.message});
    });
 }
@@ -231,16 +230,16 @@ const getAllProductsCommProduct= async (req, res) => {
    })
    .then( (data)=>{
        if(data){
-            logger.info(`ProductScope: getSubscriberSuscriptionCommProduct ok`);
-            return res.status(200).json(data);
+            logger.info(`getSubscriberSuscriptionCommProduct ok`);
+            return res.json(data);
        }
        else{
-            logger.warn(`ProductScope: getAllProductsCommProduct: Datos no encontrados`);
+            logger.warn(`getAllProductsCommProduct: Datos no encontrados`);
             return res.status(404).json({message: "Datos no encontrados."})
        }
    })
   .catch( (error)=>{
-        logger.error(`ProductScope: getAllProductsCommProduct error: ${error.message}`);
+        logger.error(`getAllProductsCommProduct error: ${error.message}`);
         res.json({error:error.message});
    });
 }
@@ -271,19 +270,19 @@ const addSubscriptionCommProduct = async (req, res) => {
         modification_user:null
     }).then(productSubscription=>{
         if(productSubscription){
-            logger.info(`ProductScope: addSubscriptionCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Item creado',productSubscription});
+            logger.info(`addSubscriptionCommProduct ok`);
+            return res.json({ok:true,mensaje:'Item creado',productSubscription});
         }
         else{
-          logger.warn(`ProductScope: addSubscriptionCommProduct: El Item no pudo ser creado`);
-          return res.status(400).json({
+          logger.warn(`addSubscriptionCommProduct: El Item no pudo ser creado`);
+          return res.json({
               ok:false,
               message:'El Item no pudo ser creado'
           })
       }
       }).catch(error=>{
-          logger.error(`ProductScope: addSubscriptionCommProduct error: ${error.message}`);
-          return res.status(404).json({
+          logger.error(`addSubscriptionCommProduct error: ${error.message}`);
+          return res.status(400).json({
               ok:false,
               mensaje:error.message,
               error:error.message
@@ -315,19 +314,19 @@ const createProductCommProduct = async (req, res) => {
         creation_date:fechaHoy
       }).then(producto=>{
         if(producto){
-            logger.info(`ProductScope: createProductCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Producto creado',producto});
+            logger.info(`createProductCommProduct ok`);
+            return res.json({ok:true,mensaje:'Producto creado',producto});
         }
         else{
-          logger.warn(`ProductScope: createProductCommProduct: El producto no pudo ser creado`);
-          return res.status(400).json({
+          logger.warn(`createProductCommProduct: El producto no pudo ser creado`);
+          return res.json({
               ok:false,
               message:'El producto no pudo ser creado'
           })
       }
       }).catch(error=>{
-          logger.error(`ProductScope: createProductCommProduct error: ${error.message}`);
-          return res.status(404).json({
+          logger.error(`createProductCommProduct error: ${error.message}`);
+          return res.status(400).json({
               ok:false,
               mensaje:error.message,
               error:error.message
@@ -356,20 +355,20 @@ const createProductScopeCommProduct = async (req, res) => {
         creation_date:fechaHoy
       }).then(prodScope=>{
         if(prodScope){
-            logger.info(`ProductScope: createProductScopeCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Alcance de Producto creado',prodScope});
+            logger.info(`createProductScopeCommProduct ok`);
+            return res.json({ok:true,mensaje:'Alcance de Producto creado',prodScope});
         }
         else{
-          logger.warn(`ProductScope: createProductScopeCommProduct: El Item no pudo ser creado`);
-          return res.status(400).json({
+          logger.warn(`createProductScopeCommProduct: El Item no pudo ser creado`);
+          return res.json({
               ok:false,
               message:'El Alcance de este producto no pudo ser creado'
           })
       }
 
       }).catch(error=>{
-          logger.error(`ProductScope: createProductScopeCommProduct error: ${error.message}`);
-          return res.status(404).json({
+          logger.error(`createProductScopeCommProduct error: ${error.message}`);
+          return res.status(400).json({
               ok:false,
               mensaje:error.message,
               error:error.message
@@ -386,11 +385,11 @@ const disableSubscriptionCommProduct = async (req, res) => {
     var body=req.body;
 
     if(NullChecker(subscriber_id, product_id)){
-        logger.warn(`ProductScope: disableSubscriptionCommProduct: Peticion invalida`);
+        logger.warn(`disableSubscriptionCommProduct: Peticion invalida`);
         return res.status(400).json({message: 'Peticion invalida'});
     }
     if(!UUIDChecker(subscriber_id)){
-        logger.warn(`ProductScope: disableSubscriptionCommProduct: Ingrese un UUID valido: ${subscriber_id}`);
+        logger.warn(`disableSubscriptionCommProduct: Ingrese un UUID valido: ${subscriber_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
     
@@ -402,15 +401,15 @@ const disableSubscriptionCommProduct = async (req, res) => {
                 modeloProductoSuscripcion.update({
                     is_active:body.is_active
                 }).then(result=>{
-                    logger.info(`ProductScope: disableSubscriptionCommProduct ok`);
-                    return res.status(200).json({
+                    logger.info(`disableSubscriptionCommProduct ok`);
+                    return res.json({
                         //ok:true,
                         message:'Producto actualizado exitosamente',
                         result
                     });
                 }).catch(error=>{
-                    logger.error(`ProductScope: disableSubscriptionCommProduct error: ${error.message}`);
-                    return res.status(404).json({
+                    logger.error(`disableSubscriptionCommProduct error: ${error.message}`);
+                    return res.status(400).json({
                         ok:false,
                         mensaje:error.message,
                         error:error.message,
@@ -418,15 +417,15 @@ const disableSubscriptionCommProduct = async (req, res) => {
                 });           
         }
         else{
-            logger.warn(`ProductScope: disableSubscriptionCommProduct: Suscripcion no encontrada`);
+            logger.warn(`disableSubscriptionCommProduct: Suscripcion no encontrada`);
             return res.status(400).json({
                 ok:false,
                 message:'Suscripcion no encontrada'
             });
         }
     }).catch(error=>{
-            logger.error(`ProductScope: disableSubscriptionCommProduct error: ${error.message}`);
-            res.status(404).json({
+            logger.error(`disableSubscriptionCommProduct error: ${error.message}`);
+            res.status(400).json({
                 ok:false,
                 mensaje:error.message,
                 error:error.message,
@@ -442,11 +441,11 @@ const updateProductCommProduct = async (req, res) => {
     var body=req.body;
 
     if(NullChecker(product_id)){
-        logger.warn(`ProductScope: updateProductCommProduct: Peticion invalida`);
+        logger.warn(`updateProductCommProduct: Peticion invalida`);
         return res.status(400).json({message: 'Peticion invalida'});
     }
     if(!UUIDChecker(product_id)){
-        logger.warn(`ProductScope: updateProductCommProduct: Ingrese un UUID valido: ${product_id}`);
+        logger.warn(`updateProductCommProduct: Ingrese un UUID valido: ${product_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
@@ -463,14 +462,14 @@ const updateProductCommProduct = async (req, res) => {
                     apply_ius:body.apply_ius,
                     modification_date:fechaHoy
                 }).then(result=>{
-                    logger.info(`ProductScope: updateProductCommProduct ok`);
-                    return res.status(200).json({
+                    logger.info(`updateProductCommProduct ok`);
+                    return res.json({
                         //ok:true,
                         message:'Producto actualizado exitosamente',
                         result
                     });
                 }).catch(error=>{
-                    return res.status(404).json({
+                    return res.status(400).json({
                         ok:false,
                         mensaje:error.message,
                         error:error.message,
@@ -478,15 +477,15 @@ const updateProductCommProduct = async (req, res) => {
                 }); 
         }
         else{
-            logger.warn(`ProductScope: updateProductCommProduct: Producto no encontrado`);
+            logger.warn(`updateProductCommProduct: Producto no encontrado`);
             return res.status(400).json({
                 ok:false,
                 message:'Producto no encontrado'
             });
         }
     }).catch(error=>{
-            logger.error(`ProductScope: updateProductCommProduct error: ${error.message}`);
-            res.status(404).json({
+            logger.error(`updateProductCommProduct error: ${error.message}`);
+            res.status(400).json({
                 ok:false,
                 mensaje:error.message,
                 error:error.message,
@@ -503,7 +502,7 @@ const updateProductScopeCommProduct = async (req, res) => {
     var body=req.body;
     
     if(!UUIDChecker(product_scope_id)){
-        logger.warn(`ProductScope: updateProductScopeCommProduct: Ingrese un UUID valido: ${product_scope_id}`);
+        logger.warn(`updateProductScopeCommProduct: Ingrese un UUID valido: ${product_scope_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
@@ -522,19 +521,19 @@ const updateProductScopeCommProduct = async (req, res) => {
               }).then(prodScope=>{
                 if(prodScope){
                     updatePTIDenProduct(body.product_type_code,body.product_id);
-                    logger.info(`ProductScope: updateProductScopeCommProduct ok`);
-                    return res.status(200).json({ok:true,mensaje:'Alcance de Producto modificado',prodScope});
+                    logger.info(`updateProductScopeCommProduct ok`);
+                    return res.json({ok:true,mensaje:'Alcance de Producto modificado',prodScope});
                 }
                 else{
-                  logger.warn(`ProductScope: updateProductScopeCommProduct: El Alcance de este producto no pudo ser modificado`);
+                  logger.warn(`updateProductScopeCommProduct: El Alcance de este producto no pudo ser modificado`);
                   return res.json({
                       ok:false,
                       message:'El Alcance de este producto no pudo ser modificado'
                   })
               }
               }).catch(error=>{
-                  logger.error(`ProductScope: updateProductScopeCommProduct error: ${error.message}`);
-                  return res.status(404).json({
+                  logger.error(`updateProductScopeCommProduct error: ${error.message}`);
+                  return res.status(400).json({
                       ok:false,
                       mensaje:error.message,
                       error:error.message
@@ -542,15 +541,15 @@ const updateProductScopeCommProduct = async (req, res) => {
               });   
         }
         else{
-            logger.warn(`ProductScope: updateProductScopeCommProduct: Item no encontrado`);
+            logger.warn(`updateProductScopeCommProduct: Item no encontrado`);
             return res.status(400).json({
                 ok:false,
                 message:'Item no encontrado'
             });
         }
     }).catch(error=>{
-        logger.error(`ProductScope: updateProductScopeCommProduct error: ${error.message}`);
-        res.status(404).json({
+        logger.error(`updateProductScopeCommProduct error: ${error.message}`);
+        res.status(400).json({
             ok:false,
             mensaje:error.message,
             error:error.message,
@@ -577,23 +576,23 @@ const updatePTIDenProduct = async (product_type_code, product_id, req, res) => {
                             product_type_id:ptid
                         }).then(result=>{
                             if(result){
-                                logger.info(`ProductScope: updatePTIDenProduct ok`);
+                                logger.info(`updatePTIDenProduct ok`);
                             }
                             else{
-                                logger.warn(`ProductScope: updatePTIDenProduct: Producto - product_type_id no pudo ser modificado`);
+                                logger.warn(`updatePTIDenProduct: Producto - product_type_id no pudo ser modificado`);
                             }
                             
                         });
                     }
                     else{
-                        logger.warn(`ProductScope: updatePTIDenProduct: Producto no encontrado`);
+                        logger.warn(`updatePTIDenProduct: Producto no encontrado`);
                         return res.status(400).json({
                             ok:false,
                             message:'Producto no encontrado'
                         });
                     }
                 }).catch(error=>{
-                    logger.error(`ProductScope: updatePTIDenProduct error: ${error.message}`);
+                    logger.error(`updatePTIDenProduct error: ${error.message}`);
                     return res.status(400).json({
                         ok:false,
                         message:'Producto no encontrado'
@@ -601,11 +600,11 @@ const updatePTIDenProduct = async (product_type_code, product_id, req, res) => {
                 }); 
         }
         else{
-            logger.warn(`ProductScope: updatePTIDenProduct: product_type_code no encontrado`);
+            logger.warn(`updatePTIDenProduct: product_type_code no encontrado`);
             return("product_type_id product_type_code encontrado");
         }
     }).catch(error=>{
-        logger.error(`ProductScope: updatePTIDenProduct error: ${error.message}`);
+        logger.error(`updatePTIDenProduct error: ${error.message}`);
         return("product_type_code no encontrado");
     }); 
 } // fin updatePTIDenProduct

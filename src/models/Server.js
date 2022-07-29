@@ -41,10 +41,6 @@ class Server {
 
     //Body lecture
     const router = require('express').Router();
-    const swaggerUi = require('swagger-ui-express');
-    const swaggerDocument = require('./swagger.json');
-    router.use('/api-docs', swaggerUi.serve);
-    router.get('/api-docs', swaggerUi.setup(swaggerDocument));
     this.app.use("/", router);
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(express.json());
