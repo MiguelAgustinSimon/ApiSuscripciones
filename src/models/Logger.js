@@ -2,7 +2,7 @@ const { getLogger, configure } =require("log4js");
 
 configure({
     appenders:{
-        app:{type:'file',filename:'./src/logs/app.log'},
+        app:{type:'file', filename:'./src/logs/app.log'},
         out:{type:'stdout'}
     },
     categories:{
