@@ -14,6 +14,8 @@ const VerificarToken =(req, res, next) => {
       }
      
       jwt.verify(req.token, process.env.TOKEN_SECRET_KEY, (error, authData) => {
+        //req.token.expiresIn= '365d';
+
         if(error){
           res.sendStatus(403);
         }else{
