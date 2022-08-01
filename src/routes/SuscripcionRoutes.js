@@ -1,4 +1,6 @@
 const { Router } = require("express");
+const verificarToken=require('../middlewares/VerificarToken');
+
 const router = Router();
 const {
     getProducts,
@@ -19,20 +21,20 @@ const {
 //Aca genero las rutas que llamo del controller
 
 //Rutas GET
-router.get("/getProducts", getProducts);
-router.get("/getSubscriberSuscriptionCommProduct/:subscriber_id", getSubscriberSuscriptionCommProduct);
-router.get("/getBySuscriptionProductIdCommProduct/:product_id", getBySuscriptionProductIdCommProduct);
-router.get("/getProductCommProduct/:product_id", getProductCommProduct);
-router.get("/getAllProductsCommProduct", getAllProductsCommProduct);
+router.get("/getProducts",verificarToken, getProducts);
+router.get("/getSubscriberSuscriptionCommProduct/:subscriber_id",verificarToken, getSubscriberSuscriptionCommProduct);
+router.get("/getBySuscriptionProductIdCommProduct/:product_id",verificarToken, getBySuscriptionProductIdCommProduct);
+router.get("/getProductCommProduct/:product_id",verificarToken, getProductCommProduct);
+router.get("/getAllProductsCommProduct",verificarToken, getAllProductsCommProduct);
 
 //Rutas POST
-router.post("/addSubscriptionCommProduct", addSubscriptionCommProduct);
-router.post("/createProductCommProduct", createProductCommProduct);
-router.post("/createProductScopeCommProduct", createProductScopeCommProduct);
+router.post("/addSubscriptionCommProduct",verificarToken, addSubscriptionCommProduct);
+router.post("/createProductCommProduct",verificarToken, createProductCommProduct);
+router.post("/createProductScopeCommProduct",verificarToken, createProductScopeCommProduct);
 
 //Rutas PUT
-router.put("/disableSubscriptionCommProduct/:subscriber_id/:product_id", disableSubscriptionCommProduct);
-router.put("/updateProductCommProduct/:product_id", updateProductCommProduct);
-router.put("/updateProductScopeCommProduct/:product_scope_id", updateProductScopeCommProduct);
+router.put("/disableSubscriptionCommProduct/:subscriber_id/:product_id",verificarToken, disableSubscriptionCommProduct);
+router.put("/updateProductCommProduct/:product_id",verificarToken, updateProductCommProduct);
+router.put("/updateProductScopeCommProduct/:product_scope_id",verificarToken, updateProductScopeCommProduct);
 
 module.exports = router;

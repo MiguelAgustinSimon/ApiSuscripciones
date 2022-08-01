@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 
 let dbConfig = {
-  HOST: "pg-prod-cross-01.c0wgtvsprq2l.us-east-1.rds.amazonaws.com",
+  //HOST: "pg-prod-cross-01.c0wgtvsprq2l.us-east-1.rds.amazonaws.com",
+  HOST: "syserrepar-pg-devqa-db-01.chbngkghfvhl.us-east-2.rds.amazonaws.com",
   USER: "dev_user",
   PASSWORD: "dev",
   DB: "pg_dev_01",

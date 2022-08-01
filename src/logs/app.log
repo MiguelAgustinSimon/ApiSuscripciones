@@ -29,3 +29,4 @@
 [2022-07-22T15:29:38.441] [INFO] default - updateProductScopeCommProduct ok
 [2022-07-22T15:29:39.048] [INFO] default - updatePTIDenProduct ok
 [2022-07-22T15:29:42.956] [WARN] default - updateProductScopeCommProduct: Ingrese un UUID valido: 7ba18b7f-c97d-49bc-8962-c07f66e2
+[2022-08-01T16:43:57.043] [INFO] default - getProducts ok
