@@ -356,6 +356,31 @@ const createProductScopeCommProduct = async (req, res) => {
         scope_finish_date
       } = req.body;
 
+      //Verificar si existe un producto con el id de producto informado
+      const _product = await modeloProducto.findOne(
+        {
+            where: {
+                product_id
+            }
+        })
+        if(!_product){
+          logger.warn(`ProductScope: createProductScopeCommProduct - No existe el producto con el id de producto informado ${product_id}`);
+          return res.status(400).json({message: "No existe el producto con el id de producto informado"});
+        }
+
+        //Verificar si ya existe un alcance activo para el producto
+        const _productScope = await modeloProductScope.findOne(
+        {
+            where: {
+                product_id:product_id,
+                is_active:"true"
+            }
+        })
+        if(_productScope){
+            logger.warn(`ProductScope: createProductScopeCommProduct - Ya existe un alcance de producto activo para el id producto informado ${product_id}`);
+            return res.status(400).json({message: "Ya existe un alcance de producto activo para el id producto informado"});
+        }
+
       const createProductScope = await modeloProductScope.create({
         product_id:product_id,
         product_max_access_count:product_max_access_count,   
