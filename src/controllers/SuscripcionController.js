@@ -291,6 +291,18 @@ const createProductCommProduct = async (req, res) => {
         creation_date
       } = req.body;
 
+      const _product = await modeloProducto.findOne(
+        {
+          where: {
+            product_code
+          }
+        })
+    
+        if(_product){
+          logger.warn(`ProductScope: Producto ya existente ${product_code}`);
+          return res.status(400).json({message: "Producto ya existente"});
+        }
+        
       const createProduct = await modeloProducto.create({
         product_code:product_code,
         product_name:product_name,   
