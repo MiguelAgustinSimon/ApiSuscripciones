@@ -16,6 +16,6 @@ configure({
 const logger=getLogger();
 
 module.exports = {
-    //Aca exporto 
+    //Aca exporto el logger 
     logger
 }
