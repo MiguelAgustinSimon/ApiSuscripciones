@@ -285,7 +285,7 @@ const createProductCommProduct = async (req, res) => {
     const request = { 
         product_code,
         product_name,     
-        product_type_id,
+        product_type_code,
         apply_eol,
         apply_ius,
         creation_date
@@ -318,7 +318,7 @@ const createProductCommProduct = async (req, res) => {
       const createProduct = await modeloProducto.create({
         product_code:product_code,
         product_name:product_name,   
-        product_type_id:product_type_id,
+        product_type_id:_productType.product_type_id,
         apply_eol:apply_eol,
         apply_ius:apply_ius,
         creation_date:fechaHoy
@@ -473,7 +473,15 @@ const disableSubscriptionCommProduct = async (req, res) => {
 //Modificar los datos un producto en la tabla product.
 const updateProductCommProduct = async (req, res) => {
     const {product_id}=req.params;
-    var body=req.body;
+
+    const request = { 
+        product_code,
+        product_name  ,
+        product_type_code,
+        apply_eol,
+        apply_ius
+      } = req.body;
+
 
     if(NullChecker(product_id)){
         logger.warn(`ProductScope: updateProductCommProduct: Peticion invalida`);
@@ -484,17 +492,41 @@ const updateProductCommProduct = async (req, res) => {
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
+     //Verificar si existe un producto con el id de producto informado
+    const _product = await modeloProducto.findOne(
+    {
+        where: {
+            product_id
+        }
+    })
+    if(!_product){
+        logger.warn(`ProductScope: updateProductCommProduct - No existe el producto con el id de producto informado ${product_id}`);
+        return res.status(400).json({message: "No existe el producto con el id de producto informado"});
+    }
+
+    //Verificar si existe un ProductType con product_type_code informado
+    const _productType = await modeloProductType.findOne(
+    {
+        where: {product_type_code}
+    })
+
+    if(!_productType){
+        logger.warn(`ProductScope: updateProductCommProduct - product type code inexistente ${product_type_code}`);
+        return res.status(400).json({message: "product type code inexistente"});
+    }
+
+
     let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
     await modeloProducto.findOne({
         where:{product_id:product_id}
     }).then(modeloProducto=>{
         if(modeloProducto){
                 modeloProducto.update({
-                    product_code:body.product_code,
-                    product_name:body.product_name,
-                    product_type_id:body.product_type_id,
-                    apply_eol:body.apply_eol,
-                    apply_ius:body.apply_ius,
+                    product_code:product_code,
+                    product_name:product_name,
+                    product_type_id:_productType.product_type_id,
+                    apply_eol:apply_eol,
+                    apply_ius:apply_ius,
                     modification_date:fechaHoy
                 }).then(result=>{
                     logger.info(`ProductScope: updateProductCommProduct ok`);
