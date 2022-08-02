@@ -302,7 +302,19 @@ const createProductCommProduct = async (req, res) => {
           logger.warn(`ProductScope: Producto ya existente ${product_code}`);
           return res.status(400).json({message: "Producto ya existente"});
         }
-        
+
+        const _productType = await modeloProductType.findOne(
+        {
+            where: {
+                product_type_code
+            }
+        })
+    
+        if(!_productType){
+            logger.warn(`ProductScope: product type code inexistente ${product_type_code}`);
+            return res.status(400).json({message: "product type code inexistente"});
+        }
+
       const createProduct = await modeloProducto.create({
         product_code:product_code,
         product_name:product_name,   
