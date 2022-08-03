@@ -12,7 +12,7 @@ class Server {
         if (process.env.STAGE == "PROD") {
             this.port = process.env.PORT || 8000;
         } else {
-            this.port = 3000;
+            this.port = 8000;
         }
     
         //Connect to database
