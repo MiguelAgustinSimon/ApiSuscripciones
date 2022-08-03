@@ -93,7 +93,10 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
             [Op.eq]: product_id
         }
     }
-
+    const { count } = await modeloProductoSuscripcion.findAndCountAll({
+        where
+    })
+    res.header('X-Total-Count', count);
    await modeloProductoSuscripcion.findAll({ 
        include:[{model:modeloProducto}],
        where
@@ -113,7 +116,6 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
        res.json({error:error.message});
    });
 }
-
 
 //Todas las suscripciones por Producto
 const getBySuscriptionProductIdCommProduct= async (req, res) => {
