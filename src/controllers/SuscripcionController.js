@@ -160,18 +160,18 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
 }
 
 
-//Traer producto especifico
+//Traer producto especifico por codProd ERP
 const getProductCommProduct= async (req, res) => {
-    const {product_id}= req.params;
+    const {product_code}= req.params;
 
-    if(!UUIDChecker(product_id)){
-        logger.warn(`ProductScope: getProductCommProduct: Ingrese un UUID valido: ${product_id}`);
-        return res.status(400).json({message: 'Ingrese un UUID valido'});
+    if(!product_code){
+        logger.warn(`getProductCommProduct: No se ingreso product_code`);
+        return res.status(400).json({message: "No se ingreso product_code."})
     }
 
-   await modeloProducto.findOne({ 
-       where:{product_id}
-   })
+    await modeloProducto.findOne({ 
+        where: {product_code} 
+      })
    .then( (data)=>{
        if(data){
             logger.info(`ProductScope: getProductCommProduct ok`);
