@@ -25,7 +25,7 @@
     "security": [{
         "bearerAuth": []
     }],
-	"host": "https://accounts.errepar.net/subscriptions",
+	"host": "https://accounts.errepar.com/subscriptions",
 	"tags": [
 		{
 			"name": "Products",
