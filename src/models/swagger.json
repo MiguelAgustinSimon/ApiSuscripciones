@@ -46,7 +46,7 @@
 				],
 				"summary": "Obtener los productos",
 				"description": "Obtener los Productos",
-				"operationId": "getStatus",
+				"operationId": "getProducts",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -65,7 +65,7 @@
 				],
 				"summary": "Obtener todas las suscripciones por Suscriptor",
 				"description": "Obtener todas las suscripciones por Suscriptor",
-				"operationId": "getStatus",
+				"operationId": "getSubscriberSuscriptionCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -99,7 +99,7 @@
 				],
 				"summary": "Obtener todas las suscripciones por Producto",
 				"description": "Obtener todas las suscripciones por Producto",
-				"operationId": "getStatus",
+				"operationId": "getBySuscriptionProductIdCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -133,7 +133,7 @@
 				],
 				"summary": "Obtener producto especifico",
 				"description": "Obtener producto especifico",
-				"operationId": "getStatus",
+				"operationId": "getProductCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -167,7 +167,7 @@
 				],
 				"summary": "Obtener los productos por tipo ",
 				"description": "Obtener los Productos por tipo",
-				"operationId": "getStatus",
+				"operationId": "getAllProductsCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -186,7 +186,7 @@
 				],
 				"summary": "Asignar un producto a un suscriptor",
 				"description": "Vincula un producto con el suscriptor.",
-				"operationId": "create",
+				"operationId": "addSubscriptionCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -252,7 +252,7 @@
 				],
 				"summary": "Dar de alta un Producto nuevo.",
 				"description": "Dar de alta un Producto nuevo.",
-				"operationId": "create",
+				"operationId": "createProductCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -318,7 +318,7 @@
 				],
 				"summary": "Dar de alta un Product Scope nuevo.",
 				"description": "Dar de alta un Product Scope nuevo.",
-				"operationId": "create",
+				"operationId": "createProductScopeCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -388,7 +388,7 @@
 				],
 				"summary": "Desactivar una Suscripcion",
 				"description": "Desactivar una Suscripcion",
-				"operationId": "update",
+				"operationId": "disableSubscriptionCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -446,7 +446,7 @@
 				],
 				"summary": "Modificar los datos un producto.",
 				"description": "Modificar los datos un producto.",
-				"operationId": "update",
+				"operationId": "updateProductCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
@@ -509,7 +509,7 @@
 				],
 				"summary": "Modificar Product Scope ",
 				"description": "Modificar Product Scope ",
-				"operationId": "update",
+				"operationId": "updateProductScopeCommProduct",
 				"produces": [
 					"application/xml",
 					"application/json"
