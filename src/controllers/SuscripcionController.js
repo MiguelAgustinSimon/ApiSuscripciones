@@ -93,7 +93,10 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
             [Op.eq]: product_id
         }
     }
-
+    const { count } = await modeloProductoSuscripcion.findAndCountAll({
+        where
+    })
+    res.header('X-Total-Count', count);
    await modeloProductoSuscripcion.findAll({ 
        include:[{model:modeloProducto}],
        where
@@ -113,7 +116,6 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
        res.json({error:error.message});
    });
 }
-
 
 //Todas las suscripciones por Producto
 const getBySuscriptionProductIdCommProduct= async (req, res) => {
@@ -158,18 +160,18 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
 }
 
 
-//Traer producto especifico
+//Traer producto especifico por codProd ERP
 const getProductCommProduct= async (req, res) => {
-    const {product_id}= req.params;
+    const {product_code}= req.params;
 
-    if(!UUIDChecker(product_id)){
-        logger.warn(`ProductScope: getProductCommProduct: Ingrese un UUID valido: ${product_id}`);
-        return res.status(400).json({message: 'Ingrese un UUID valido'});
+    if(!product_code){
+        logger.warn(`getProductCommProduct: No se ingreso product_code`);
+        return res.status(400).json({message: "No se ingreso product_code."})
     }
 
-   await modeloProducto.findOne({ 
-       where:{product_id}
-   })
+    await modeloProducto.findOne({ 
+        where: {product_code} 
+      })
    .then( (data)=>{
        if(data){
             logger.info(`ProductScope: getProductCommProduct ok`);
@@ -285,16 +287,40 @@ const createProductCommProduct = async (req, res) => {
     const request = { 
         product_code,
         product_name,     
-        product_type_id,
+        product_type_code,
         apply_eol,
         apply_ius,
         creation_date
       } = req.body;
 
+      const _product = await modeloProducto.findOne(
+        {
+          where: {
+            product_code
+          }
+        })
+    
+        if(_product){
+          logger.warn(`ProductScope: Producto ya existente ${product_code}`);
+          return res.status(400).json({message: "Producto ya existente"});
+        }
+
+        const _productType = await modeloProductType.findOne(
+        {
+            where: {
+                product_type_code
+            }
+        })
+    
+        if(!_productType){
+            logger.warn(`ProductScope: product type code inexistente ${product_type_code}`);
+            return res.status(400).json({message: "product type code inexistente"});
+        }
+
       const createProduct = await modeloProducto.create({
         product_code:product_code,
         product_name:product_name,   
-        product_type_id:product_type_id,
+        product_type_id:_productType.product_type_id,
         apply_eol:apply_eol,
         apply_ius:apply_ius,
         creation_date:fechaHoy
@@ -331,6 +357,31 @@ const createProductScopeCommProduct = async (req, res) => {
         product_max_user_count,
         scope_finish_date
       } = req.body;
+
+      //Verificar si existe un producto con el id de producto informado
+      const _product = await modeloProducto.findOne(
+        {
+            where: {
+                product_id
+            }
+        })
+        if(!_product){
+          logger.warn(`ProductScope: createProductScopeCommProduct - No existe el producto con el id de producto informado ${product_id}`);
+          return res.status(400).json({message: "No existe el producto con el id de producto informado"});
+        }
+
+        //Verificar si ya existe un alcance activo para el producto
+        const _productScope = await modeloProductScope.findOne(
+        {
+            where: {
+                product_id:product_id,
+                is_active:"true"
+            }
+        })
+        if(_productScope){
+            logger.warn(`ProductScope: createProductScopeCommProduct - Ya existe un alcance de producto activo para el id producto informado ${product_id}`);
+            return res.status(400).json({message: "Ya existe un alcance de producto activo para el id producto informado"});
+        }
 
       const createProductScope = await modeloProductScope.create({
         product_id:product_id,
@@ -424,7 +475,15 @@ const disableSubscriptionCommProduct = async (req, res) => {
 //Modificar los datos un producto en la tabla product.
 const updateProductCommProduct = async (req, res) => {
     const {product_id}=req.params;
-    var body=req.body;
+
+    const request = { 
+        product_code,
+        product_name  ,
+        product_type_code,
+        apply_eol,
+        apply_ius
+      } = req.body;
+
 
     if(NullChecker(product_id)){
         logger.warn(`ProductScope: updateProductCommProduct: Peticion invalida`);
@@ -435,17 +494,41 @@ const updateProductCommProduct = async (req, res) => {
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
+     //Verificar si existe un producto con el id de producto informado
+    const _product = await modeloProducto.findOne(
+    {
+        where: {
+            product_id
+        }
+    })
+    if(!_product){
+        logger.warn(`ProductScope: updateProductCommProduct - No existe el producto con el id de producto informado ${product_id}`);
+        return res.status(400).json({message: "No existe el producto con el id de producto informado"});
+    }
+
+    //Verificar si existe un ProductType con product_type_code informado
+    const _productType = await modeloProductType.findOne(
+    {
+        where: {product_type_code}
+    })
+
+    if(!_productType){
+        logger.warn(`ProductScope: updateProductCommProduct - product type code inexistente ${product_type_code}`);
+        return res.status(400).json({message: "product type code inexistente"});
+    }
+
+
     let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
     await modeloProducto.findOne({
         where:{product_id:product_id}
     }).then(modeloProducto=>{
         if(modeloProducto){
                 modeloProducto.update({
-                    product_code:body.product_code,
-                    product_name:body.product_name,
-                    product_type_id:body.product_type_id,
-                    apply_eol:body.apply_eol,
-                    apply_ius:body.apply_ius,
+                    product_code:product_code,
+                    product_name:product_name,
+                    product_type_id:_productType.product_type_id,
+                    apply_eol:apply_eol,
+                    apply_ius:apply_ius,
                     modification_date:fechaHoy
                 }).then(result=>{
                     logger.info(`ProductScope: updateProductCommProduct ok`);
