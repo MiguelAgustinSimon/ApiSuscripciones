@@ -25,18 +25,21 @@
     "security": [{
         "bearerAuth": []
     }],
-	"host": "https://accounts.errepar.net/subscriptions",
+	"servers":[{
+		"url": "https://accounts.errepar.com/customers-and-products-api/api",
+		"description": "Server publico (Testing)"
+	  },{
+		"url": "http://localhost:3001/api",
+		"description": "Server testing local"
+	  }],
 	"tags": [
 		{
 			"name": "Products",
 			"description": "Obten todo sobre los datos de suscripciones"
 		}
 	],
-	"schemes": [
-		"http"
-	],
 	"paths": {
-		"/api/getProducts": {
+		"/getProducts": {
 			"get": {
 				"tags": [
 					"Products"
@@ -55,7 +58,7 @@
 				}
 			}
 		},
-		"/api/getSubscriberSuscriptionCommProduct/{subscriber_id}": {
+		"/getSubscriberSuscriptionCommProduct/{subscriber_id}": {
 			"get": {
 				"tags": [
 					"Products"
@@ -89,7 +92,7 @@
 				}
 			}
 		},
-		"/api/getBySuscriptionProductIdCommProduct/{product_id}": {
+		"/getBySuscriptionProductIdCommProduct/{product_id}": {
 			"get": {
 				"tags": [
 					"Products"
@@ -123,7 +126,7 @@
 				}
 			}
 		},
-		"/api/getProductCommProduct/{product_id}": {
+		"/getProductCommProduct/{product_id}": {
 			"get": {
 				"tags": [
 					"Products"
@@ -157,7 +160,7 @@
 				}
 			}
 		},
-		"/api/getAllProductsCommProduct": {
+		"/getAllProductsCommProduct": {
 			"get": {
 				"tags": [
 					"Products"
@@ -176,7 +179,7 @@
 				}
 			}
 		},
-		"/api/addSubscriptionCommProduct": {
+		"/addSubscriptionCommProduct": {
 			"post": {
 				"tags": [
 					"Products"
@@ -242,7 +245,7 @@
 				}
 			}
 		},
-		"/api/createProductCommProduct": {
+		"/createProductCommProduct": {
 			"post": {
 				"tags": [
 					"Products"
@@ -308,7 +311,7 @@
 				}
 			}
 		},
-		"/api/createProductScopeCommProduct": {
+		"/createProductScopeCommProduct": {
 			"post": {
 				"tags": [
 					"Products"
@@ -378,7 +381,7 @@
 				}
 			}
 		},
-		"/api/disableSubscriptionCommProduct/{subscriber_id}/{product_id}": {
+		"/disableSubscriptionCommProduct/{subscriber_id}/{product_id}": {
 			"put": {
 				"tags": [
 					"Products"
@@ -436,7 +439,7 @@
 				}
 			}
 		},
-		"/api/updateProductCommProduct/{product_id}": {
+		"/updateProductCommProduct/{product_id}": {
 			"put": {
 				"tags": [
 					"Products"
@@ -499,7 +502,7 @@
 				}
 			}
 		},
-		"/api/updateProductScopeCommProduct/{product_scope_id}": {
+		"/updateProductScopeCommProduct/{product_scope_id}": {
 			"put": {
 				"tags": [
 					"Products"
