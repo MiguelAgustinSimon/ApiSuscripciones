@@ -13,7 +13,7 @@ const VerificarToken =(req, res, next) => {
         return res.status(403).json({message: "Ocurrio un error al autenticar el token. Verifique su token por favor.", error: error})
       }
      
-      jwt.verify(req.token, process.env.TOKEN_SECRET_KEY, (error, authData) => {
+      jwt.verify(req.token, process.env.PUBLIC_KEY, (error, authData) => {
         //req.token.expiresIn= '365d';
 
         if(error){
