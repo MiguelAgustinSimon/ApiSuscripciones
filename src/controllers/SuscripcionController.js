@@ -254,8 +254,8 @@ const addSubscriptionCommProduct = async (req, res) => {
         account_executive_ref_id:account_executive_ref_id,
         creation_date:fechaHoy,// yyyy-mm-dd
         creation_user:creation_user,
-        modification_date:null,
-        modification_user:null
+        modification_date:fechaHoy,
+        modification_user:creation_user
     }).then(productSubscription=>{
         if(productSubscription){
             logger.info(`ProductScope: addSubscriptionCommProduct ok`);
