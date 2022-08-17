@@ -207,22 +207,13 @@
 								"subscriber_id": {
 									"type": "UUID"
 								},
-								"subscription_start_date": {
-									"type": "string"
-								},
 								"subscription_finish_date": {
-									"type": "string"
-								},
-								"is_active": {
 									"type": "string"
 								},
 								"account_executive_ref_id": {
 									"type": "UUID"
 								},
 								"creation_user":{
-									"type": "string"
-								},
-								"creation_date":{
 									"type": "string"
 								}
 							},
@@ -266,29 +257,19 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"product_id": {
-									"type": "UUID",
-									"format": "string"
-								},
 								"product_code": {
 									"type": "string"
 								},
 								"product_name": {
 									"type": "string"
 								},
-								"product_type_id": {
-									"type": "integer"
+								"product_type_code": {
+									"type": "string"
 								},
 								"apply_eol": {
 									"type": "string"
 								},
 								"apply_ius": {
-									"type": "string"
-								},
-								"creation_user":{
-									"type": "string"
-								},
-								"creation_date":{
 									"type": "string"
 								}
 							},
@@ -299,13 +280,13 @@
 					}
 				],
 				"responses": {
-					"400": {
+					"501": {
 						"description": "El Item no pudo ser creado."
 					},
-					"404": {
+					"400": {
 						"description": "Error."
 					},
-					"200":{
+					"201":{
 						"description": "Retorna el registro del Producto."
 					}
 				}
@@ -332,10 +313,6 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"product_scope_id":{
-									"type": "UUID",
-									"format": "string"
-								},
 								"product_id": {
 									"type": "UUID",
 									"format": "string"
@@ -346,19 +323,7 @@
 								"product_max_user_count": {
 									"type": "integer"
 								},
-								"scope_start_date": {
-									"type": "string"
-								},
 								"scope_finish_date": {
-									"type": "string"
-								},
-								"is_active": {
-									"type": "string"
-								},
-								"creation_user":{
-									"type": "string"
-								},
-								"creation_date":{
 									"type": "string"
 								}
 							},
@@ -372,10 +337,10 @@
 					"400": {
 						"description": "El Alcance de este producto no pudo ser creado."
 					},
-					"404": {
+					"501": {
 						"description": "Error."
 					},
-					"200":{
+					"201":{
 						"description": "Retorna el registro."
 					}
 				}
@@ -430,7 +395,7 @@
 					"400": {
 						"description": "'Peticion invalida' o 'Ingrese un UUID valido' o 'Suscripcion no encontrada'."
 					},
-					"404": {
+					"501": {
 						"description": "Error."
 					},
 					"200": {
@@ -473,7 +438,7 @@
 								"product_name":{
 									"type": "string"
 								},
-								"product_type_id":{
+								"product_type_code":{
 									"type": "string"
 								},
 								"apply_eol":{
@@ -493,7 +458,7 @@
 					"400": {
 						"description": "'Peticion invalida' o 'Ingrese un UUID valido' o 'Suscripcion no encontrada'."
 					},
-					"404": {
+					"501": {
 						"description": "Error."
 					},
 					"200": {

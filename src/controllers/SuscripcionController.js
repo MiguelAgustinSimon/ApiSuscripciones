@@ -237,7 +237,7 @@ const getAllProductsCommProduct= async (req, res) => {
 //Alta de Producto-Suscripcion
 const addSubscriptionCommProduct = async (req, res) => { 
     let fechaHoy= new Date().toISOString().slice(0, 10);    
-    const request = { 
+    const { 
         subscriber_id,
         product_id,     
         subscription_finish_date,
@@ -245,18 +245,19 @@ const addSubscriptionCommProduct = async (req, res) => {
         creation_user
       } = req.body;
       
-      const createProductSubscription = await modeloProductoSuscripcion.create({
-        subscriber_id:subscriber_id,
-        product_id:product_id,   
-        subscription_start_date:fechaHoy,// yyyy-mm-dd
-        subscription_finish_date:subscription_finish_date,
-        is_active:1,//true
-        account_executive_ref_id:account_executive_ref_id,
-        creation_date:fechaHoy,// yyyy-mm-dd
-        creation_user:creation_user,
-        modification_date:fechaHoy,
-        modification_user:creation_user
-    }).then(productSubscription=>{
+    try{
+        const productSubscription = await modeloProductoSuscripcion.create({
+            subscriber_id:subscriber_id,
+            product_id:product_id,   
+            subscription_start_date:fechaHoy,// yyyy-mm-dd
+            subscription_finish_date:subscription_finish_date,
+            is_active:1,//true
+            account_executive_ref_id:account_executive_ref_id,
+            creation_date:fechaHoy,// yyyy-mm-dd
+            creation_user:creation_user,
+            modification_date:fechaHoy,
+            modification_user:creation_user
+        });
         if(productSubscription){
             logger.info(`ProductScope: addSubscriptionCommProduct ok`);
             return res.status(200).json({ok:true,mensaje:'Item creado',productSubscription});
@@ -267,15 +268,15 @@ const addSubscriptionCommProduct = async (req, res) => {
               ok:false,
               message:'El Item no pudo ser creado'
           })
-      }
-      }).catch(error=>{
-          logger.error(`ProductScope: addSubscriptionCommProduct error: ${error.message}`);
-          return res.status(404).json({
-              ok:false,
-              mensaje:error.message,
-              error:error.message
-          });
-      }); 
+        }
+    }catch(error){
+        logger.error(`ProductScope: addSubscriptionCommProduct error: ${error.message}`);
+        return res.status(404).json({
+            ok:false,
+            mensaje:error.message,
+            error:error.message
+        });
+    }
 
 } // fin addSubscriptionCommProduct
 
@@ -284,13 +285,12 @@ const addSubscriptionCommProduct = async (req, res) => {
 const createProductCommProduct = async (req, res) => {
     let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
         
-    const request = { 
+    const { 
         product_code,
         product_name,     
         product_type_code,
         apply_eol,
-        apply_ius,
-        creation_date
+        apply_ius
       } = req.body;
 
       const _product = await modeloProducto.findOne(
@@ -317,33 +317,33 @@ const createProductCommProduct = async (req, res) => {
             return res.status(400).json({message: "product type code inexistente"});
         }
 
-      const createProduct = await modeloProducto.create({
-        product_code:product_code,
-        product_name:product_name,   
-        product_type_id:_productType.product_type_id,
-        apply_eol:apply_eol,
-        apply_ius:apply_ius,
-        creation_date:fechaHoy
-      }).then(producto=>{
+
+    try{
+        const producto = await modeloProducto.create({
+            product_code:product_code,
+            product_name:product_name,   
+            product_type_id:_productType.product_type_id,
+            apply_eol:apply_eol,
+            apply_ius:apply_ius,
+            creation_date:fechaHoy
+          });
         if(producto){
             logger.info(`ProductScope: createProductCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Producto creado',producto});
+            return res.status(201).json({mensaje:'Producto creado',producto});
         }
         else{
-          logger.warn(`ProductScope: createProductCommProduct: El producto no pudo ser creado`);
-          return res.status(400).json({
-              ok:false,
-              message:'El producto no pudo ser creado'
-          })
-      }
-      }).catch(error=>{
-          logger.error(`ProductScope: createProductCommProduct error: ${error.message}`);
-          return res.status(404).json({
-              ok:false,
-              mensaje:error.message,
-              error:error.message
-          });
-      });   
+            logger.warn(`ProductScope: createProductCommProduct: El producto no pudo ser creado`);
+            return res.status(400).json({
+                message:'El producto no pudo ser creado'
+            })
+        }
+    }catch(error){
+        logger.error(`ProductScope: createProductCommProduct error: ${error.message}`);
+        return res.status(501).json({
+            mensaje:error.message,
+            error:error.message
+        });
+    }  
 } // fin createProductCommProduct
 
 
@@ -351,7 +351,7 @@ const createProductCommProduct = async (req, res) => {
 const createProductScopeCommProduct = async (req, res) => {
     let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
         
-    const request = { 
+    const { 
         product_id,
         product_max_access_count,     
         product_max_user_count,
@@ -383,34 +383,32 @@ const createProductScopeCommProduct = async (req, res) => {
             return res.status(400).json({message: "Ya existe un alcance de producto activo para el id producto informado"});
         }
 
-      const createProductScope = await modeloProductScope.create({
-        product_id:product_id,
-        product_max_access_count:product_max_access_count,   
-        product_max_user_count:product_max_user_count,
-        scope_finish_date:scope_finish_date,
-        scope_start_date:fechaHoy,
-        creation_date:fechaHoy
-      }).then(prodScope=>{
-        if(prodScope){
-            logger.info(`ProductScope: createProductScopeCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Alcance de Producto creado',prodScope});
+        try{
+            const prodScope = await modeloProductScope.create({
+                product_id:product_id,
+                product_max_access_count:product_max_access_count,   
+                product_max_user_count:product_max_user_count,
+                scope_finish_date:scope_finish_date,
+                scope_start_date:fechaHoy,
+                creation_date:fechaHoy
+            });
+            if(prodScope){
+                logger.info(`ProductScope: createProductScopeCommProduct ok`);
+                return res.status(201).json({mensaje:'Alcance de Producto creado',prodScope});
+            }
+            else{
+                logger.warn(`ProductScope: createProductScopeCommProduct: El Item no pudo ser creado`);
+                return res.status(400).json({
+                    message:'El Alcance de este producto no pudo ser creado'
+                })
+            }
+        }catch(error){
+            logger.error(`ProductScope: createProductScopeCommProduct error: ${error.message}`);
+            return res.status(501).json({
+                mensaje:error.message,
+                error:error.message
+            });
         }
-        else{
-          logger.warn(`ProductScope: createProductScopeCommProduct: El Item no pudo ser creado`);
-          return res.status(400).json({
-              ok:false,
-              message:'El Alcance de este producto no pudo ser creado'
-          })
-      }
-
-      }).catch(error=>{
-          logger.error(`ProductScope: createProductScopeCommProduct error: ${error.message}`);
-          return res.status(404).json({
-              ok:false,
-              mensaje:error.message,
-              error:error.message
-          });
-      });   
 } // fin createProductScopeCommProduct
 
 
@@ -430,10 +428,10 @@ const disableSubscriptionCommProduct = async (req, res) => {
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
     
-
     await modeloProductoSuscripcion.findOne({
         where:{subscriber_id:subscriber_id, product_id:product_id}
     }).then(modeloProductoSuscripcion=>{
+        console.log(modeloProductoSuscripcion)
         if(modeloProductoSuscripcion){
                 modeloProductoSuscripcion.update({
                     is_active:body.is_active
@@ -446,7 +444,7 @@ const disableSubscriptionCommProduct = async (req, res) => {
                     });
                 }).catch(error=>{
                     logger.error(`ProductScope: disableSubscriptionCommProduct error: ${error.message}`);
-                    return res.status(404).json({
+                    return res.status(501).json({
                         ok:false,
                         mensaje:error.message,
                         error:error.message,
@@ -462,12 +460,13 @@ const disableSubscriptionCommProduct = async (req, res) => {
         }
     }).catch(error=>{
             logger.error(`ProductScope: disableSubscriptionCommProduct error: ${error.message}`);
-            res.status(404).json({
+            res.status(501).json({
                 ok:false,
                 mensaje:error.message,
                 error:error.message,
             });
         }); 
+
 
 } // fin disableSubscriptionCommProduct
 
@@ -476,9 +475,9 @@ const disableSubscriptionCommProduct = async (req, res) => {
 const updateProductCommProduct = async (req, res) => {
     const {product_id}=req.params;
 
-    const request = { 
+    const { 
         product_code,
-        product_name  ,
+        product_name,
         product_type_code,
         apply_eol,
         apply_ius
@@ -519,47 +518,39 @@ const updateProductCommProduct = async (req, res) => {
 
 
     let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
-    await modeloProducto.findOne({
+    const productoAModificar =await modeloProducto.findOne({
         where:{product_id:product_id}
-    }).then(modeloProducto=>{
-        if(modeloProducto){
-                modeloProducto.update({
+    })
+    try{
+        {
+            if(!productoAModificar){
+                logger.warn(`ProductScope: updateProductCommProduct: Producto no encontrado`);
+                return res.status(400).json({
+                    message:'Producto no encontrado'
+                });
+            }
+       
+        const result = await productoAModificar.update({
                     product_code:product_code,
                     product_name:product_name,
                     product_type_id:_productType.product_type_id,
                     apply_eol:apply_eol,
                     apply_ius:apply_ius,
                     modification_date:fechaHoy
-                }).then(result=>{
-                    logger.info(`ProductScope: updateProductCommProduct ok`);
-                    return res.status(200).json({
-                        //ok:true,
-                        message:'Producto actualizado exitosamente',
-                        result
-                    });
-                }).catch(error=>{
-                    return res.status(404).json({
-                        ok:false,
-                        mensaje:error.message,
-                        error:error.message,
-                    });
-                }); 
+                })
+                logger.info(`ProductScope: updateProductCommProduct ok`);
+                return res.status(200).json({
+                    message:'Producto actualizado exitosamente',
+                    result
+               });  
         }
-        else{
-            logger.warn(`ProductScope: updateProductCommProduct: Producto no encontrado`);
-            return res.status(400).json({
-                ok:false,
-                message:'Producto no encontrado'
-            });
-        }
-    }).catch(error=>{
-            logger.error(`ProductScope: updateProductCommProduct error: ${error.message}`);
-            res.status(404).json({
-                ok:false,
-                mensaje:error.message,
-                error:error.message,
-            });
-        }); 
+    }catch(error){
+        logger.error(`ProductScope: updateProductCommProduct error: ${error.message}`);
+        res.status(501).json({
+            mensaje:error.message,
+            error:error.message,
+        });
+    }
 } // fin updateProductCommProduct
 
 
@@ -591,7 +582,7 @@ const updateProductScopeCommProduct = async (req, res) => {
                 if(prodScope){
                     updatePTIDenProduct(body.product_type_code,body.product_id);
                     logger.info(`ProductScope: updateProductScopeCommProduct ok`);
-                    return res.status(200).json({ok:true,mensaje:'Alcance de Producto modificado',prodScope});
+                    return res.status(200).json({mensaje:'Alcance de Producto modificado',prodScope});
                 }
                 else{
                   logger.warn(`ProductScope: updateProductScopeCommProduct: El Alcance de este producto no pudo ser modificado`);
@@ -602,7 +593,7 @@ const updateProductScopeCommProduct = async (req, res) => {
               }
               }).catch(error=>{
                   logger.error(`ProductScope: updateProductScopeCommProduct error: ${error.message}`);
-                  return res.status(404).json({
+                  return res.status(501).json({
                       ok:false,
                       mensaje:error.message,
                       error:error.message
@@ -618,7 +609,7 @@ const updateProductScopeCommProduct = async (req, res) => {
         }
     }).catch(error=>{
         logger.error(`ProductScope: updateProductScopeCommProduct error: ${error.message}`);
-        res.status(404).json({
+        res.status(501).json({
             ok:false,
             mensaje:error.message,
             error:error.message,
