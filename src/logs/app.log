@@ -34,3 +34,21 @@
 [2022-08-02T10:14:47.931] [INFO] default - getProducts ok
 [2022-08-02T10:17:09.840] [INFO] default - ProductScope: getProducts ok
 [2022-08-02T15:08:26.198] [INFO] default - ProductScope: getProducts ok
+[2022-08-16T15:58:48.006] [ERROR] default - ProductScope: addSubscriptionCommProduct error: invalid input syntax for type uuid: "jaja troleado"
+[2022-08-16T15:59:24.261] [ERROR] default - ProductScope: addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
+[2022-08-16T16:00:01.542] [ERROR] default - ProductScope: addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
+[2022-08-16T16:00:47.181] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:01:18.562] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:01:51.743] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:32:42.604] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:44:12.231] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:51:26.147] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:52:36.796] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
+[2022-08-16T16:53:20.361] [INFO] default - ProductScope: addSubscriptionCommProduct ok
+[2022-08-17T14:58:01.395] [INFO] default - ProductScope: getProducts ok
+[2022-08-17T15:06:01.028] [WARN] default - ProductScope: product type code inexistente 234345
+[2022-08-17T15:07:13.525] [WARN] default - ProductScope: product type code inexistente 234345
+[2022-08-17T15:20:38.817] [INFO] default - ProductScope: createProductCommProduct ok
+[2022-08-17T15:32:20.954] [INFO] default - ProductScope: addSubscriptionCommProduct ok
+[2022-08-17T15:36:52.699] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-08-17T15:37:28.328] [INFO] default - ProductScope: updateProductCommProduct ok
