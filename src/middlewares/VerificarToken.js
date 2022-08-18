@@ -8,6 +8,7 @@ const VerificarToken =(req, res, next) => {
         let bearerToken = '';
         if(typeof bearerHeader !== 'undefined') {
           bearerToken = bearerHeader;
+          console.log(process.env.PUBLIC_KEY)
           jwt.verify(bearerToken, process.env.PUBLIC_KEY, (error, authData) => {
             //req.token.expiresIn= '365d';
     
