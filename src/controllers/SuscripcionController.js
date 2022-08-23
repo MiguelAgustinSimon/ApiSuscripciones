@@ -162,15 +162,15 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
 
 //Traer producto especifico por codProd ERP
 const getProductCommProduct= async (req, res) => {
-    const {product_code}= req.params;
+    const {product_id}= req.params;
 
-    if(!product_code){
-        logger.warn(`getProductCommProduct: No se ingreso product_code`);
-        return res.status(400).json({message: "No se ingreso product_code."})
+    if(!product_id){
+        logger.warn(`getProductCommProduct: No se ingreso product_id`);
+        return res.status(400).json({message: "No se ingreso product_id."})
     }
 
     await modeloProducto.findOne({ 
-        where: {product_code} 
+        where: {product_id} 
       })
    .then( (data)=>{
        if(data){
