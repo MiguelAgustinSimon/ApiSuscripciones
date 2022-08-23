@@ -169,23 +169,25 @@ const getProductCommProduct= async (req, res) => {
         return res.status(400).json({message: "No se ingreso product_id."})
     }
 
-    await modeloProducto.findOne({ 
-        where: {product_id} 
-      })
-   .then( (data)=>{
-       if(data){
-            logger.info(`ProductScope: getProductCommProduct ok`);
-            return res.json(data);
-       }
-       else{
-            logger.warn(`ProductScope: getProductCommProduct: Datos no encontrados`);
-            return res.status(404).json({message: "Datos no encontrados."})
-       }
-   })
-  .catch( (error)=>{
-        logger.error(`ProductScope: getProductCommProduct error: ${error.message}`);
-        res.json({error:error.message});
-   });
+    await modeloProducto.findByPk( 
+        product_id ,
+        {include:[{model:modeloProductScope}]}
+      )
+    .then((data)=>{
+        console.log(data)
+        if(data){
+                logger.info(`ProductScope: getProductCommProduct ok`);
+                return res.json(data);
+        }
+        else{
+                logger.warn(`ProductScope: getProductCommProduct: Datos no encontrados`);
+                return res.status(404).json({message: "Datos no encontrados."})
+        }
+    })
+    .catch( (error)=>{
+            logger.error(`ProductScope: getProductCommProduct error: ${error.message}`);
+            res.json({error:error.message});
+    });
 }
 
 //Lista de Productos por tipo 
