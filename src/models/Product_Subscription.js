@@ -14,6 +14,7 @@ const Product_Subscription = db.define("product_subscription",{
     subscription_start_date:DataTypes.DATE,
     subscription_finish_date:DataTypes.DATE,
     is_active:DataTypes.BOOLEAN,
+    erp_thematic:DataTypes.STRING,
     account_executive_ref_id:DataTypes.UUID,
     creation_date: DataTypes.DATE,
     creation_user: DataTypes.STRING,

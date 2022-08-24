@@ -244,6 +244,7 @@ const addSubscriptionCommProduct = async (req, res) => {
         product_id,     
         subscription_finish_date,
         account_executive_ref_id,
+        erp_thematic,
         creation_user
       } = req.body;
       
@@ -254,6 +255,7 @@ const addSubscriptionCommProduct = async (req, res) => {
             subscription_start_date:fechaHoy,// yyyy-mm-dd
             subscription_finish_date:subscription_finish_date,
             is_active:1,//true
+            erp_thematic,
             account_executive_ref_id:account_executive_ref_id,
             creation_date:fechaHoy,// yyyy-mm-dd
             creation_user:creation_user,

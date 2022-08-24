@@ -210,6 +210,9 @@
 								"subscription_finish_date": {
 									"type": "string"
 								},
+								"erp_thematic":{
+									"type": "string"
+								},
 								"account_executive_ref_id": {
 									"type": "UUID"
 								},
