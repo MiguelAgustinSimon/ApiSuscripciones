@@ -52,3 +52,27 @@
 [2022-08-17T15:32:20.954] [INFO] default - ProductScope: addSubscriptionCommProduct ok
 [2022-08-17T15:36:52.699] [INFO] default - ProductScope: updateProductCommProduct ok
 [2022-08-17T15:37:28.328] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-08-25T12:56:31.392] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T12:58:50.148] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T12:59:03.572] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T12:59:15.312] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:00:20.777] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:01:23.033] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:01:54.226] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:01:55.678] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:02:08.684] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:05:25.876] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:05:33.988] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:05:37.610] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:05:42.965] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:05:46.455] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:05:53.587] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:06:42.000] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:06:57.864] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:07:17.485] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:07:26.697] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:07:48.448] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-08-25T13:09:03.497] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-08-25T13:09:13.576] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-08-25T13:09:56.462] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-08-25T13:10:09.303] [INFO] default - ProductScope: getProductCommProduct ok

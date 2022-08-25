@@ -162,19 +162,22 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
 
 //Traer producto especifico por codProd ERP
 const getProductCommProduct= async (req, res) => {
-    const {product_id}= req.params;
+    const {product_code}= req.params;
 
-    if(!product_id){
-        logger.warn(`getProductCommProduct: No se ingreso product_id`);
-        return res.status(400).json({message: "No se ingreso product_id."})
+    if(!product_code){
+        logger.warn(`getProductCommProduct: No se ingreso product_code`);
+        return res.status(400).json({message: "No se ingreso product_code."})
     }
 
-    await modeloProducto.findByPk( 
-        product_id ,
-        {include:[{model:modeloProductScope}]}
-      )
+    console.log("PRODUCT CODE >>>> ", product_code)
+    await modeloProducto.findOne({
+        where: {
+            product_code: product_code
+        },
+        include:[{model:modeloProductScope}]
+    })
     .then((data)=>{
-        console.log(data)
+        
         if(data){
                 logger.info(`ProductScope: getProductCommProduct ok`);
                 return res.json(data);
