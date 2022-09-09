@@ -11,7 +11,7 @@ const NullChecker = require("../middlewares/NullChecker");
 const Op = Sequelize.Op;
 // ---------------------------------------------------- RUTAS GET--------------------------------------------------------------
 
-//Traigo todos los productos
+
 // const getProducts = async (req, res) => {
 //     //const { subscriber_id }=req.params.subscriber_id;
     
@@ -26,6 +26,7 @@ const Op = Sequelize.Op;
 //     })
 // }
 
+//Traigo todos los productos
 const getProducts = async (req, res) => {
     const pageAsNumber=Number.parseInt(req.query.page);
     const sizeAsNumber=Number.parseInt(req.query.size);
