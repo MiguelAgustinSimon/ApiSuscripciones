@@ -76,3 +76,11 @@
 [2022-08-25T13:09:13.576] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
 [2022-08-25T13:09:56.462] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
 [2022-08-25T13:10:09.303] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-09T13:19:34.237] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-09T13:22:07.421] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-09T13:23:55.202] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-09T13:33:05.739] [INFO] default - ProductScope: getProducts ok
+[2022-09-09T13:39:10.990] [ERROR] default - ProductScope: getSubscriberSuscriptionCommProduct error: column product_subscription.erp_thematic does not exist
+[2022-09-09T13:43:11.980] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-09T13:43:53.841] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-09T13:44:00.667] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok

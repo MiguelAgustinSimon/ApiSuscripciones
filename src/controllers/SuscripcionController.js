@@ -98,7 +98,7 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
     })
     res.header('X-Total-Count', count);
    await modeloProductoSuscripcion.findAll({ 
-       include:[{model:modeloProducto}],
+    include: [{ model: modeloProducto, include: [modeloProductScope,modeloProductType]}],
        where
    })
    .then( (data)=>{
@@ -116,6 +116,7 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
        res.json({error:error.message});
    });
 }
+
 
 //Todas las suscripciones por Producto
 const getBySuscriptionProductIdCommProduct= async (req, res) => {
@@ -169,13 +170,10 @@ const getProductCommProduct= async (req, res) => {
         return res.status(400).json({message: "No se ingreso product_code."})
     }
 
-    console.log("PRODUCT CODE >>>> ", product_code)
     await modeloProducto.findOne({
-        where: {
-            product_code: product_code
-        },
-        include:[{model:modeloProductScope}]
-    })
+        include: [modeloProductScope,modeloProductType], 
+        where: {product_code} 
+      })
     .then((data)=>{
         
         if(data){
