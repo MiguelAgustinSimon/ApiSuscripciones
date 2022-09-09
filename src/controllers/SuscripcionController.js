@@ -50,7 +50,7 @@ const getProducts = async (req, res) => {
 }
 
 
-//Todas las suscripciones por Suscriptor
+//Trae todas las suscripciones por Suscriptor
 const getSubscriberSuscriptionCommProduct= async (req, res) => {
     const {subscriber_id}= req.params;
 
