@@ -171,31 +171,30 @@ const getBySuscriptionProductIdCommProduct= async (req, res) => {
 }
 
 
-//Traer producto especifico por codProd ERP
+//Traer producto especifico
 const getProductCommProduct= async (req, res) => {
-    const {product_code}= req.params;
+    const {product_id}= req.params;
 
-    if(!product_code){
-        logger.warn(`getProductCommProduct: No se ingreso product_code`);
-        return res.status(400).json({message: "No se ingreso product_code."})
+    if(!UUIDChecker(product_id)){
+        logger.warn(`getProductCommProduct: Ingrese un UUID valido: ${product_id}`);
+        return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
 
-    await modeloProducto.findOne({
-        include: [modeloProductScope,modeloProductType], 
-        where: {product_code} 
-      })
+   await modeloProducto.findOne({ 
+       where:{product_id}
+   })
    .then( (data)=>{
        if(data){
-            logger.info(`ProductScope: getProductCommProduct ok`);
+            logger.info(`getProductCommProduct ok`);
             return res.json(data);
        }
        else{
-            logger.warn(`ProductScope: getProductCommProduct: Datos no encontrados`);
+            logger.warn(`getProductCommProduct: Datos no encontrados`);
             return res.status(404).json({message: "Datos no encontrados."})
        }
    })
   .catch( (error)=>{
-        logger.error(`ProductScope: getProductCommProduct error: ${error.message}`);
+        logger.error(`getProductCommProduct error: ${error.message}`);
         res.json({error:error.message});
    });
 }
