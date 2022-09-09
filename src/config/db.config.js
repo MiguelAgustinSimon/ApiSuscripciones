@@ -1,10 +1,10 @@
 const Sequelize = require("sequelize");
 
 let dbConfig = {
-  HOST: process.env.POSTGRESQL_HOST,
-  USER: process.env.POSTGRESQL_USER,
-  PASSWORD: process.env.POSTGRESQL_PASS,
-  DB: process.env.POSTGRESQL_NAME,
+  HOST: "syserrepar-pg-devqa-db-01.chbngkghfvhl.us-east-2.rds.amazonaws.com",
+  USER: "dev_user",
+  PASSWORD: "dev",
+  DB: "pg_dev_01",
   dialect: "postgres",
 };
 
@@ -15,4 +15,3 @@ const db = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 });
 
 module.exports = db;
-
