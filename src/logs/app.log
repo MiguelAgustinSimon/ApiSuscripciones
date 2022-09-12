@@ -33,3 +33,7 @@
 [2022-09-09T17:25:59.897] [ERROR] default - addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
 [2022-09-09T17:26:13.580] [ERROR] default - addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
 [2022-09-09T17:26:20.141] [INFO] default - addSubscriptionCommProduct okk
+[2022-09-12T13:42:12.064] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-12T13:43:55.042] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-12T13:44:38.650] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-12T13:44:49.351] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
