@@ -12,7 +12,7 @@ class Server {
         if (process.env.STAGE == "PROD") {
             this.port = process.env.PORT || 8000;
         } else {
-            this.port = 8000;
+            this.port = 3000;
         }
     
         //Connect to database
@@ -27,6 +27,7 @@ class Server {
 
     async dbConnection() {
         try {
+          console.log(db);
           await db.authenticate();
           console.log("Database online");
         } catch (error) {
@@ -46,8 +47,9 @@ class Server {
 
     router.use('/api-docs', swaggerUi.serve);
     router.get('/api-docs', swaggerUi.setup(swaggerDocument));
-    
+
     this.app.use("/", router);
+
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(express.json());
     this.app.use(function(err, req, res, next) {

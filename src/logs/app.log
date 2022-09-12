@@ -30,58 +30,6 @@
 [2022-07-22T15:29:39.048] [INFO] default - updatePTIDenProduct ok
 [2022-07-22T15:29:42.956] [WARN] default - updateProductScopeCommProduct: Ingrese un UUID valido: 7ba18b7f-c97d-49bc-8962-c07f66e2
 [2022-08-01T16:43:57.043] [INFO] default - getProducts ok
-[2022-08-02T10:13:13.040] [INFO] default - getProducts ok
-[2022-08-02T10:14:47.931] [INFO] default - getProducts ok
-[2022-08-02T10:17:09.840] [INFO] default - ProductScope: getProducts ok
-[2022-08-02T15:08:26.198] [INFO] default - ProductScope: getProducts ok
-[2022-08-16T15:58:48.006] [ERROR] default - ProductScope: addSubscriptionCommProduct error: invalid input syntax for type uuid: "jaja troleado"
-[2022-08-16T15:59:24.261] [ERROR] default - ProductScope: addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
-[2022-08-16T16:00:01.542] [ERROR] default - ProductScope: addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
-[2022-08-16T16:00:47.181] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:01:18.562] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:01:51.743] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:32:42.604] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:44:12.231] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:51:26.147] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:52:36.796] [ERROR] default - ProductScope: addSubscriptionCommProduct error: insert or update on table "product_subscription" violates foreign key constraint "product_subscription_prod_fkey"
-[2022-08-16T16:53:20.361] [INFO] default - ProductScope: addSubscriptionCommProduct ok
-[2022-08-17T14:58:01.395] [INFO] default - ProductScope: getProducts ok
-[2022-08-17T15:06:01.028] [WARN] default - ProductScope: product type code inexistente 234345
-[2022-08-17T15:07:13.525] [WARN] default - ProductScope: product type code inexistente 234345
-[2022-08-17T15:20:38.817] [INFO] default - ProductScope: createProductCommProduct ok
-[2022-08-17T15:32:20.954] [INFO] default - ProductScope: addSubscriptionCommProduct ok
-[2022-08-17T15:36:52.699] [INFO] default - ProductScope: updateProductCommProduct ok
-[2022-08-17T15:37:28.328] [INFO] default - ProductScope: updateProductCommProduct ok
-[2022-08-25T12:56:31.392] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T12:58:50.148] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T12:59:03.572] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T12:59:15.312] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:00:20.777] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:01:23.033] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:01:54.226] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:01:55.678] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:02:08.684] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:05:25.876] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:05:33.988] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:05:37.610] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:05:42.965] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:05:46.455] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:05:53.587] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:06:42.000] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:06:57.864] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:07:17.485] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:07:26.697] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:07:48.448] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-08-25T13:09:03.497] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
-[2022-08-25T13:09:13.576] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
-[2022-08-25T13:09:56.462] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
-[2022-08-25T13:10:09.303] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-09-09T13:19:34.237] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-09-09T13:22:07.421] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-09-09T13:23:55.202] [INFO] default - ProductScope: getProductCommProduct ok
-[2022-09-09T13:33:05.739] [INFO] default - ProductScope: getProducts ok
-[2022-09-09T13:39:10.990] [ERROR] default - ProductScope: getSubscriberSuscriptionCommProduct error: column product_subscription.erp_thematic does not exist
-[2022-09-09T13:43:11.980] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
-[2022-09-09T13:43:53.841] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
-[2022-09-09T13:44:00.667] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
-[2022-09-09T13:46:03.825] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-09T17:25:59.897] [ERROR] default - addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
+[2022-09-09T17:26:13.580] [ERROR] default - addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
+[2022-09-09T17:26:20.141] [INFO] default - addSubscriptionCommProduct ok
