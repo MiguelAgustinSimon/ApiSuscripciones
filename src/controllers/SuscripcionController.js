@@ -36,8 +36,6 @@ const getProducts = async (req, res) => {
     const lista = await modeloProducto.findAll({
         limit:size,
         offset:page*size
-        
-        //include:[{model:modeloProductoSuscripcion}]
     })
     .then((lista)=>{
         logger.info(`ProductScope: getProducts ok`);
