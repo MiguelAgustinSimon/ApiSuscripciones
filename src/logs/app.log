@@ -32,4 +32,4 @@
 [2022-08-01T16:43:57.043] [INFO] default - getProducts ok
 [2022-09-09T17:25:59.897] [ERROR] default - addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
 [2022-09-09T17:26:13.580] [ERROR] default - addSubscriptionCommProduct error: invalid input syntax for type date: "Invalid date"
-[2022-09-09T17:26:20.141] [INFO] default - addSubscriptionCommProduct ok
+[2022-09-09T17:26:20.141] [INFO] default - addSubscriptionCommProduct okk
