@@ -374,9 +374,19 @@ const addSubscriptionCommProduct = async (req, res) => {
     var validaStartDate = moment(subscription_start_date);
     var validaFinishDate = moment(subscription_finish_date);
 
-    if(!product_id){
+    //verifico si existe el suscriptor
+    const suscriptor = await modeloSubscriber.findByPk(subscriber_id);
+    //verifico si existe el producto
+    const producto = await modeloProducto.findByPk(product_id);
+
+    if(!suscriptor){
+      logger.warn(`addSubscriptionCommProduct: Suscriptor no existente: ${suscriptor}`);
+      return res.status(404).json({message: "Suscriptor no existente"});
+    }
+
+    if(!product_id || !producto){
         logger.warn(`addSubscriptionCommProduct: No se ingreso product_id`);
-        return res.status(400).json({message: "No se ingreso producto para el suscriptor"})
+        return res.status(400).json({message: "No se ingreso producto para el suscriptor o este es inexistente"})
     }
     if(!validaStartDate.isValid() || validaStartDate>=fechaHoy){
         logger.warn(`addSubscriptionCommProduct: Fecha de inicio de suscripcion invalida`);
@@ -385,6 +395,10 @@ const addSubscriptionCommProduct = async (req, res) => {
     if(!validaFinishDate.isValid() || validaFinishDate<=fechaHoy){
         logger.warn(`addSubscriptionCommProduct: Fecha de finalizacion de suscripcion invalida`);
         return res.status(400).json({message: "Fecha de finalizacion de suscripcion invalida"})
+    }
+
+    if(!account_executive_ref_id){
+        account_executive_ref_id=1;
     }
 
     //Verificamos si la relacion ya existe
