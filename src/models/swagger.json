@@ -140,11 +140,11 @@
 				],
 				"parameters": [
 					{
-						"name": "product_id",
+						"name": "product_code",
 						"in": "path",
-						"description": "product_id del producto que se desea buscar.",
+						"description": "product_code del producto que se desea buscar.",
 						"required": true,
-						"type": "UUID"
+						"type": "integer"
 					}
 				],
 				"responses": {

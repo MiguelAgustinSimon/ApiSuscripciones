@@ -24,7 +24,7 @@ const {
 router.get("/getProducts",verificarToken, getProducts);
 router.get("/getSubscriberSuscriptionCommProduct/:subscriber_id",verificarToken, getSubscriberSuscriptionCommProduct);
 router.get("/getBySuscriptionProductIdCommProduct/:product_id",verificarToken, getBySuscriptionProductIdCommProduct);
-router.get("/getProductCommProduct/:product_id",verificarToken, getProductCommProduct);
+router.get("/getProductCommProduct/:product_code",verificarToken, getProductCommProduct);
 router.get("/getAllProductsCommProduct",verificarToken, getAllProductsCommProduct);
 
 //Rutas POST

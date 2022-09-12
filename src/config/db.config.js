@@ -7,7 +7,8 @@ let dbConfig = {
   DB: process.env.POSTGRESQL_NAME,
   dialect: "postgres",
 };
-
+// console.log("------------CONFIG-------------")
+// console.log(dbConfig)
 const db = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
@@ -15,3 +16,5 @@ const db = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 });
 
 module.exports = db;
+
+
