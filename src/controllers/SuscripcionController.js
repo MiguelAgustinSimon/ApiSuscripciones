@@ -340,14 +340,15 @@ const getAllProductsCommProduct= async (req, res) => {
         order: [['product_code', 'ASC'], ['product_name', 'ASC' ]]
    })
    .then( (data)=>{
-       if(data){
-            logger.info(`ProductScope: getSubscriberSuscriptionCommProduct ok`);
-            return res.status(200).json(data);
-       }
-       else{
+        if (data.length===0) 
+        { 
             logger.warn(`ProductScope: getAllProductsCommProduct: Datos no encontrados`);
             return res.status(404).json({message: "Datos no encontrados."})
-       }
+        }
+        else{
+            logger.info(`ProductScope: getAllProductsCommProduct ok`);
+            return res.status(200).json(data);
+        }
    })
   .catch( (error)=>{
         logger.error(`ProductScope: getAllProductsCommProduct error: ${error.message}`);
@@ -362,22 +363,42 @@ const addSubscriptionCommProduct = async (req, res) => {
     //let fechaHoy= new Date().toISOString().slice(0, 10);    
     const request = { 
         subscriber_id,
-        product_id,     
+        product_id,
+        subscription_start_date,     
         subscription_finish_date,
         account_executive_ref_id,
         creation_user
       } = req.body;
     
     let fechaHoy = moment();  
+    var validaStartDate = moment(subscription_start_date);
     var validaFinishDate = moment(subscription_finish_date);
 
-    if(!product_id){
+    //verifico si existe el suscriptor
+    const suscriptor = await modeloSubscriber.findByPk(subscriber_id);
+    //verifico si existe el producto
+    const producto = await modeloProducto.findByPk(product_id);
+
+    if(!suscriptor){
+      logger.warn(`addSubscriptionCommProduct: Suscriptor no existente: ${suscriptor}`);
+      return res.status(404).json({message: "Suscriptor no existente"});
+    }
+
+    if(!product_id || !producto){
         logger.warn(`addSubscriptionCommProduct: No se ingreso product_id`);
-        return res.status(400).json({message: "No se ingreso producto para el suscriptor"})
+        return res.status(400).json({message: "No se ingreso producto para el suscriptor o este es inexistente"})
+    }
+    if(!validaStartDate.isValid() || validaStartDate>=fechaHoy){
+        logger.warn(`addSubscriptionCommProduct: Fecha de inicio de suscripcion invalida`);
+        return res.status(400).json({message: "Fecha de inicio de suscripcion invalida"})
     }
     if(!validaFinishDate.isValid() || validaFinishDate<=fechaHoy){
         logger.warn(`addSubscriptionCommProduct: Fecha de finalizacion de suscripcion invalida`);
         return res.status(400).json({message: "Fecha de finalizacion de suscripcion invalida"})
+    }
+
+    if(!account_executive_ref_id){
+        account_executive_ref_id=1;
     }
 
     //Verificamos si la relacion ya existe
@@ -398,7 +419,7 @@ const addSubscriptionCommProduct = async (req, res) => {
       const createProductSubscription = await modeloProductoSuscripcion.create({
         subscriber_id:subscriber_id,
         product_id:product_id,   
-        subscription_start_date:fechaHoy,// yyyy-mm-dd
+        subscription_start_date:subscription_start_date,// yyyy-mm-dd
         subscription_finish_date:subscription_finish_date,
         is_active:1,//true
         account_executive_ref_id:account_executive_ref_id,
