@@ -37,3 +37,31 @@
 [2022-09-12T13:43:55.042] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
 [2022-09-12T13:44:38.650] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
 [2022-09-12T13:44:49.351] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-14T16:27:40.781] [INFO] default - ProductScope: disableSubscriptionCommProduct ok
+[2022-09-14T16:28:41.762] [INFO] default - ProductScope: disableSubscriptionCommProduct ok
+[2022-09-14T16:56:25.324] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-14T16:56:42.895] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-14T17:10:41.590] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:12:48.600] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:13:35.726] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:14:33.808] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:15:42.470] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:17:21.977] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:17:28.257] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:17:32.888] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:17:54.641] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:19:18.339] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:20:45.682] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:20:54.628] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:21:05.930] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:23:24.961] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:23:52.403] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:24:34.079] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-14T17:26:21.953] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-14T17:27:23.717] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-14T17:31:03.997] [INFO] default - ProductScope: addSubscriptionCommProduct ok
+[2022-09-14T17:31:27.754] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-14T17:32:51.694] [WARN] default - addSubscriptionCommProduct: Suscriptor no existente: null
+[2022-09-14T17:33:17.686] [WARN] default - addSubscriptionCommProduct: No se ingreso product_id
+[2022-09-14T17:33:27.666] [WARN] default - addSubscriptionCommProduct: No se ingreso product_id
+[2022-09-14T17:33:41.648] [WARN] default - addSubscriptionCommProduct: Suscriptor no existente: null

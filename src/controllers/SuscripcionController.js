@@ -10,23 +10,11 @@ const NullChecker = require("../middlewares/NullChecker");
 var moment = require('moment'); 
 
 const Op = Sequelize.Op;
+
+const parseJwt=async (token)=>{
+    return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+}
 // ---------------------------------------------------- RUTAS GET--------------------------------------------------------------
-
-//Traigo todos los productos
-// const getProducts = async (req, res) => {
-//     //const { subscriber_id }=req.params.subscriber_id;
-    
-//     await modeloProducto.findAll({
-//         include:[{model:modeloProductoSuscripcion}]
-//     })
-//     .then( (data)=>{
-//         res.json({datos:data});
-//     })
-//    .catch( (error)=>{
-//         res.json({error:error});
-//     })
-// }
-
 const getProducts = async (req, res) => {
     const pageAsNumber=Number.parseInt(req.query.page);
     const sizeAsNumber=Number.parseInt(req.query.size);
@@ -297,6 +285,7 @@ const getAllProductsCommProduct= async (req, res) => {
     let where={};
 
     let product_type_id= req.query.product_type_id;
+    let product_type_code= req.query.product_type_code;
     let apply_eol= req.query.apply_eol;
     let apply_ius= req.query.apply_ius;
 
@@ -307,6 +296,16 @@ const getAllProductsCommProduct= async (req, res) => {
     if(!Number.isNaN(sizeAsNumber) && sizeAsNumber>0 && sizeAsNumber<10){
         size=sizeAsNumber;
     }
+
+    if(product_type_code)
+    {
+        const ptc = await modeloProductType.findOne(
+        {where: {product_type_code}})
+        if(ptc){
+            product_type_id=ptc.product_type_id
+        }
+    }
+
 
     if(product_type_id){
         where.product_type_id= {
@@ -337,7 +336,7 @@ const getAllProductsCommProduct= async (req, res) => {
         //include:[{model:modeloProductType,model:modeloProductScope}],
         include: [modeloProductScope,modeloProductType], 
         where,
-        order: [['product_code', 'ASC'], ['product_name', 'ASC' ]]
+        order: [['product_name', 'ASC'], ['product_code', 'ASC' ]]
    })
    .then( (data)=>{
         if (data.length===0) 
@@ -370,6 +369,8 @@ const addSubscriptionCommProduct = async (req, res) => {
         creation_user
       } = req.body;
     
+    let req2=await parseJwt(req.token); 
+
     let fechaHoy = moment();  
     var validaStartDate = moment(subscription_start_date);
     var validaFinishDate = moment(subscription_finish_date);
@@ -419,12 +420,12 @@ const addSubscriptionCommProduct = async (req, res) => {
       const createProductSubscription = await modeloProductoSuscripcion.create({
         subscriber_id:subscriber_id,
         product_id:product_id,   
-        subscription_start_date:subscription_start_date,// yyyy-mm-dd
-        subscription_finish_date:subscription_finish_date,
+        subscription_start_date:validaStartDate,
+        subscription_finish_date:validaFinishDate,
         is_active:1,//true
         account_executive_ref_id:account_executive_ref_id,
         creation_date:fechaHoy,// yyyy-mm-dd
-        creation_user:creation_user,
+        creation_user:req2.idpData.email,
         modification_date:null,
         modification_user:null
     }).then(productSubscription=>{
@@ -453,7 +454,7 @@ const addSubscriptionCommProduct = async (req, res) => {
 
 //Dar de alta un Producto nuevo
 const createProductCommProduct = async (req, res) => {
-    let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
+    let fechaHoy = moment();  
         
     const request = { 
         product_code,
@@ -521,7 +522,7 @@ const createProductCommProduct = async (req, res) => {
 
 //Dar de alta un Product Scope nuevo
 const createProductScopeCommProduct = async (req, res) => {
-    let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
+    let fechaHoy= moment();
         
     const request = { 
         product_id,
@@ -530,17 +531,13 @@ const createProductScopeCommProduct = async (req, res) => {
         scope_finish_date
       } = req.body;
 
-      //Verificar si existe un producto con el id de producto informado
-      const _product = await modeloProducto.findOne(
-        {
-            where: {
-                product_id
+      //Verificar si existe este producto..
+        const _producto = await modeloProducto.findByPk(product_id)
+        .then(_producto=>{
+            if(!_producto){
+                return res.status(200).json({message: "Producto no encontrado"});
             }
-        })
-        if(!_product){
-          logger.warn(`ProductScope: createProductScopeCommProduct - No existe el producto con el id de producto informado ${product_id}`);
-          return res.status(400).json({message: "No existe el producto con el id de producto informado"});
-        }
+        }).catch((err) => res.status(404).json({message: "Producto no encontrado"}));
 
         //Verificar si ya existe un alcance activo para el producto
         const _productScope = await modeloProductScope.findOne(
@@ -568,13 +565,12 @@ const createProductScopeCommProduct = async (req, res) => {
             return res.status(200).json({ok:true,mensaje:'Alcance de Producto creado',prodScope});
         }
         else{
-          logger.warn(`ProductScope: createProductScopeCommProduct: El Item no pudo ser creado`);
-          return res.status(400).json({
-              ok:false,
-              message:'El Alcance de este producto no pudo ser creado'
-          })
-      }
-
+            logger.warn(`ProductScope: createProductScopeCommProduct: El Item no pudo ser creado`);
+            return res.status(400).json({
+                ok:false,
+                message:'El Alcance de este producto no pudo ser creado'
+            })
+        }
       }).catch(error=>{
           logger.error(`ProductScope: createProductScopeCommProduct error: ${error.message}`);
           return res.status(404).json({
@@ -591,8 +587,9 @@ const createProductScopeCommProduct = async (req, res) => {
 //Desactivar una Suscripcion
 const disableSubscriptionCommProduct = async (req, res) => {
     const {subscriber_id,product_id}=req.params;
-    var body=req.body;
+    let req2=await parseJwt(req.token); 
 
+    let fechaHoy = moment();  
     if(NullChecker(subscriber_id, product_id)){
         logger.warn(`ProductScope: disableSubscriptionCommProduct: Peticion invalida`);
         return res.status(400).json({message: 'Peticion invalida'});
@@ -608,7 +605,9 @@ const disableSubscriptionCommProduct = async (req, res) => {
     }).then(modeloProductoSuscripcion=>{
         if(modeloProductoSuscripcion){
                 modeloProductoSuscripcion.update({
-                    is_active:body.is_active
+                    is_active:0,
+                    modification_date:fechaHoy,
+                    modification_user:req2.idpData.email
                 }).then(result=>{
                     logger.info(`ProductScope: disableSubscriptionCommProduct ok`);
                     return res.status(200).json({
@@ -650,7 +649,7 @@ const updateProductCommProduct = async (req, res) => {
 
     const request = { 
         product_code,
-        product_name  ,
+        product_name,
         product_type_code,
         apply_eol,
         apply_ius
@@ -690,7 +689,7 @@ const updateProductCommProduct = async (req, res) => {
     }
 
 
-    let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
+    let fechaHoy= moment();
     await modeloProducto.findOne({
         where:{product_id:product_id}
     }).then(modeloProducto=>{
@@ -739,7 +738,7 @@ const updateProductCommProduct = async (req, res) => {
 const updateProductScopeCommProduct = async (req, res) => {
     const {product_scope_id}=req.params;
 
-    let fechaHoy= new Date().toISOString().slice(0, 10); //yyyy-mm-dd
+    let fechaHoy= moment();
     var body=req.body;
     
     if(!UUIDChecker(product_scope_id)){
