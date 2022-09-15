@@ -65,3 +65,141 @@
 [2022-09-14T17:33:17.686] [WARN] default - addSubscriptionCommProduct: No se ingreso product_id
 [2022-09-14T17:33:27.666] [WARN] default - addSubscriptionCommProduct: No se ingreso product_id
 [2022-09-14T17:33:41.648] [WARN] default - addSubscriptionCommProduct: Suscriptor no existente: null
+[2022-09-15T09:35:51.005] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T09:36:15.486] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T09:36:27.867] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T09:42:03.844] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:43:02.827] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:43:10.287] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:43:15.002] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:44:09.975] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:44:59.870] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:45:19.942] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:46:28.956] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:49:47.407] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:50:30.216] [ERROR] default - ProductScope: updateProductCommProduct error: _productType is not defined
+[2022-09-15T09:54:37.821] [ERROR] default - ProductScope: updateProductCommProduct error: ptype is not defined
+[2022-09-15T09:54:54.278] [ERROR] default - ProductScope: updateProductCommProduct error: ptype is not defined
+[2022-09-15T09:56:16.221] [ERROR] default - ProductScope: updateProductCommProduct error: ptype is not defined
+[2022-09-15T10:00:35.869] [ERROR] default - ProductScope: updateProductCommProduct error: ptype is not defined
+[2022-09-15T10:00:55.824] [ERROR] default - ProductScope: updateProductCommProduct error: ptype is not defined
+[2022-09-15T10:04:52.011] [ERROR] default - ProductScope: updateProductCommProduct error: ptype is not defined
+[2022-09-15T10:07:14.353] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T10:07:23.212] [WARN] default - ProductScope: updateProductCommProduct - product type code inexistente BASE-PRODDD
+[2022-09-15T10:07:45.789] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T10:10:27.779] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_type_code" has invalid "undefined" value
+[2022-09-15T10:11:37.094] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_type_code" has invalid "undefined" value
+[2022-09-15T10:12:02.606] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T10:12:18.484] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T10:13:12.617] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:26:59.053] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:27:04.617] [WARN] default - ProductScope: updateProductCommProduct - product type code inexistente BASE-PRODD
+[2022-09-15T12:27:13.500] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:27:50.012] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_type_code" has invalid "undefined" value
+[2022-09-15T12:32:33.975] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:32:48.504] [WARN] default - ProductScope: updateProductCommProduct: Peticion invalida
+[2022-09-15T12:41:01.183] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:41:09.884] [WARN] default - ProductScope: updateProductCommProduct: Peticion invalida
+[2022-09-15T12:41:17.913] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:41:27.723] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_id" has invalid "undefined" value
+[2022-09-15T12:42:43.347] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:42:49.747] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:42:59.248] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:44:38.466] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:44:43.930] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T12:44:52.036] [WARN] default - ProductScope: updateProductCommProduct: Peticion invalida
+[2022-09-15T14:11:38.238] [ERROR] default - ProductScope: updateProductCommProduct error: invalid input syntax for type uuid: "15080030"
+[2022-09-15T14:16:27.829] [WARN] default - ProductScope: updateProductCommProduct - No existe el producto con el id de producto informado undefined
+[2022-09-15T14:19:01.627] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:19:20.662] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:19:41.266] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:21:12.130] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:21:19.730] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_type_code" has invalid "undefined" value
+[2022-09-15T14:26:52.954] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-15T14:27:01.019] [WARN] default - getProductCommProduct: No se ingreso product_code
+[2022-09-15T14:42:34.890] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-15T14:42:42.327] [WARN] default - getSubscriberSuscriptionCommProduct: No se ingreso subscriber_id
+[2022-09-15T14:42:55.215] [WARN] default - getSubscriberSuscriptionCommProduct: No se ingreso subscriber_id
+[2022-09-15T14:43:00.565] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-15T14:43:05.639] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-15T14:44:07.938] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-15T14:46:01.824] [INFO] default - ProductScope: getBySuscriptionProductIdCommProduct ok
+[2022-09-15T14:46:07.521] [WARN] default - getBySuscriptionProductIdCommProduct: No se ingreso product_id
+[2022-09-15T14:46:18.662] [INFO] default - ProductScope: getBySuscriptionProductIdCommProduct ok
+[2022-09-15T14:49:03.668] [INFO] default - ProductScope: disableSubscriptionCommProduct ok
+[2022-09-15T14:49:09.084] [WARN] default - getBySuscriptionProductIdCommProduct: No se ingreso product_id y/o subscriber_id
+[2022-09-15T14:49:32.612] [WARN] default - getBySuscriptionProductIdCommProduct: No se ingreso product_id y/o subscriber_id
+[2022-09-15T14:49:46.983] [INFO] default - ProductScope: disableSubscriptionCommProduct ok
+[2022-09-15T14:51:33.473] [INFO] default - ProductScope: disableSubscriptionCommProduct ok
+[2022-09-15T14:51:44.742] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:51:48.471] [WARN] default - updateProductCommProduct: No se ingreso el producto
+[2022-09-15T14:51:53.139] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:52:01.544] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T14:52:05.989] [WARN] default - ProductScope: updateProductCommProduct - No existe el producto con el id de producto informado undefined
+[2022-09-15T14:52:11.413] [WARN] default - updateProductCommProduct: No se ingreso el producto
+[2022-09-15T14:55:02.845] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T14:55:03.282] [INFO] default - ProductScope: updatePTIDenProduct ok
+[2022-09-15T14:55:07.401] [WARN] default - updateProductScopeCommProduct: No se ingreso el product_scope_id
+[2022-09-15T14:55:12.923] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T14:55:13.312] [INFO] default - ProductScope: updatePTIDenProduct ok
+[2022-09-15T15:00:04.594] [ERROR] default - ProductScope: updateProductCommProduct error: product_code is not defined
+[2022-09-15T15:00:15.343] [ERROR] default - ProductScope: updateProductCommProduct error: product_code is not defined
+[2022-09-15T15:01:55.788] [ERROR] default - ProductScope: updateProductCommProduct error: Cannot read properties of undefined (reading 'product_code')
+[2022-09-15T15:03:04.680] [ERROR] default - ProductScope: updateProductCommProduct error: Cannot read properties of undefined (reading 'product_code')
+[2022-09-15T15:04:52.309] [ERROR] default - ProductScope: updateProductCommProduct error: product_id is not defined
+[2022-09-15T15:05:54.265] [WARN] default - ProductScope: updateProductCommProduct - No existe el producto con el id de producto informado undefined
+[2022-09-15T15:05:59.910] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:06:54.273] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:07:41.619] [WARN] default - ProductScope: updateProductCommProduct - product type code inexistente BASE-PRODgfh
+[2022-09-15T15:08:59.497] [WARN] default - ProductScope: updateProductCommProduct - product type code inexistente BASE-PRODgfh
+[2022-09-15T15:09:10.044] [WARN] default - ProductScope: updateProductCommProduct - product type code inexistente BASE-PRODgfh
+[2022-09-15T15:09:15.447] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:10:21.932] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:10:54.801] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:12:12.932] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:12:46.316] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:12:57.170] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:13:12.731] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:31:40.910] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-15T15:33:06.809] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T15:33:06.993] [ERROR] default - ProductScope: updatePTIDenProduct error: WHERE parameter "product_id" has invalid "undefined" value
+[2022-09-15T15:45:59.151] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T15:45:59.642] [INFO] default - ProductScope: updatePTIDenProduct ok
+[2022-09-15T15:52:11.801] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T15:52:12.016] [ERROR] default - ProductScope: updatePTIDenProduct error: WHERE parameter "product_id" has invalid "undefined" value
+[2022-09-15T16:34:09.588] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T16:34:58.328] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T16:36:06.832] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T17:03:32.586] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:05:00.534] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:06:11.869] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:08:42.941] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:08:49.640] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:10:48.911] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:11:36.781] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:12:19.874] [ERROR] default - ProductScope: updateProductScopeCommProduct error: body is not defined
+[2022-09-15T17:12:48.728] [ERROR] default - ProductScope: updateProductScopeCommProduct error: body is not defined
+[2022-09-15T17:13:23.241] [ERROR] default - ProductScope: updateProductScopeCommProduct error: body is not defined
+[2022-09-15T17:14:06.450] [ERROR] default - ProductScope: updateProductScopeCommProduct error: body is not defined
+[2022-09-15T17:14:44.136] [ERROR] default - ProductScope: updateProductScopeCommProduct error: product_id is not defined
+[2022-09-15T17:17:31.759] [WARN] default - addSubscriptionCommProduct: Fecha de inicio de suscripcion invalida
+[2022-09-15T17:18:00.864] [WARN] default - addSubscriptionCommProduct: Fecha de inicio de suscripcion invalida
+[2022-09-15T17:18:46.947] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-15T17:19:00.884] [INFO] default - ProductScope: addSubscriptionCommProduct ok
+[2022-09-15T17:19:47.566] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-15T17:20:31.629] [ERROR] default - ProductScope: updateProductScopeCommProduct error: product_id is not defined
+[2022-09-15T17:21:52.730] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T17:22:05.531] [WARN] default - updateProductScopeCommProduct: Fecha de finalizacion invalida
+[2022-09-15T17:22:15.013] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T17:22:24.596] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T17:22:32.226] [WARN] default - updateProductScopeCommProduct: Fecha de inicio invalida
+[2022-09-15T17:23:28.345] [ERROR] default - ProductScope: updateProductScopeCommProduct error: invalid input syntax for type boolean: "asdasdasd"
+[2022-09-15T17:24:11.046] [ERROR] default - ProductScope: updateProductScopeCommProduct error: invalid input syntax for type boolean: "asdasdasd"
+[2022-09-15T17:24:27.839] [ERROR] default - ProductScope: updateProductScopeCommProduct error: invalid input syntax for type boolean: "asdasdasd"
+[2022-09-15T17:31:35.066] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T17:31:55.798] [INFO] default - ProductScope: updateProductScopeCommProduct ok
+[2022-09-15T17:34:16.549] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-15T17:34:38.887] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-15T17:35:01.891] [ERROR] default - ProductScope: getSubscriberSuscriptionCommProduct error: column product_subscription.product_name does not exist
+[2022-09-15T17:35:23.270] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-15T17:35:57.476] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
