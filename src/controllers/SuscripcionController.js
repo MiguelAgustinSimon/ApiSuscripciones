@@ -75,15 +75,19 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
     const sizeAsNumber=Number.parseInt(req.query.size);
 
     let where={};
-    let subscription_start_date= req.query.subscription_start_date;
-    let subscription_finish_date= req.query.subscription_finish_date;
+    let fechaInicio= req.query.subscription_start_date;
+    let fechaFin= req.query.subscription_finish_date;
     let is_active= req.query.is_active;
     let product_id= req.query.product_id;
     let product_code= req.query.product_code;
 
     let page=0;
     let size=10;
-    
+
+    var validaStartDate = moment(fechaInicio);
+    var validaFinishDate = moment(fechaFin);
+
+
     if(!subscriber_id){
         logger.warn(`getSubscriberSuscriptionCommProduct: No se ingreso subscriber_id`);
         return res.status(400).json({message: "No se ingreso subscriber_id."})
@@ -108,19 +112,35 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
             [Op.eq]: subscriber_id
         }
     }
-    if(subscription_start_date)
-    {
-        console.log(subscription_start_date);
-        where.subscription_start_date= {
-            [Op.gte]: subscription_start_date
+    
+    if(fechaInicio){
+        if(!validaStartDate.isValid()){
+            logger.warn(`getSubscriberSuscriptionCommProduct: Fecha de inicio invalida`);
+            return res.status(400).json({message: "Fecha de inicio invalida"})
+        }else{
+            if(validaStartDate)
+            {
+                where.subscription_start_date= {
+                    [Op.gte]: validaStartDate
+                }
+            }
         }
     }
-    if(subscription_finish_date)
-    {
-        where.subscription_finish_date= {
-            [Op.lte]: subscription_finish_date
+    if(fechaFin){
+        if(!validaFinishDate.isValid()){
+            logger.warn(`getSubscriberSuscriptionCommProduct: Fecha de finalizacion invalida`);
+            return res.status(400).json({message: "Fecha de finalizacion invalida"})
+        }else{
+            if(validaFinishDate)
+            {
+                where.subscription_finish_date= {
+                    [Op.lte]: validaFinishDate
+                }
+            }
         }
     }
+
+    
     if(is_active){
         where.is_active= {
             [Op.eq]: is_active
@@ -140,7 +160,7 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
             }
         });
     }
-    
+    console.log(where);
     const { count } = await modeloProductoSuscripcion.findAndCountAll({
         where,
         limit:size,

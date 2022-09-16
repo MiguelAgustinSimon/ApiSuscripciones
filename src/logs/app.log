@@ -203,3 +203,49 @@
 [2022-09-15T17:35:01.891] [ERROR] default - ProductScope: getSubscriberSuscriptionCommProduct error: column product_subscription.product_name does not exist
 [2022-09-15T17:35:23.270] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
 [2022-09-15T17:35:57.476] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T11:52:33.473] [INFO] default - ProductScope: getProducts ok
+[2022-09-16T13:00:48.137] [INFO] default - ProductScope: getProducts ok
+[2022-09-16T13:01:22.035] [INFO] default - ProductScope: getProducts ok
+[2022-09-16T13:02:20.669] [INFO] default - ProductScope: getProducts ok
+[2022-09-16T13:19:22.836] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:19:28.335] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:19:40.953] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:20:21.630] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:20:42.447] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:20:52.901] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:21:31.574] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:31:27.136] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-16T13:31:41.914] [WARN] default - addSubscriptionCommProduct: Fecha de finalizacion de suscripcion invalida
+[2022-09-16T13:36:08.699] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:36:20.740] [WARN] default - getSubscriberSuscriptionCommProduct: Fecha de finalizacion invalida
+[2022-09-16T13:36:29.843] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:42:38.992] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T13:42:43.568] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T13:42:56.066] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:04:51.500] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:05:55.714] [WARN] default - getSubscriberSuscriptionCommProduct: No se ingreso subscriber_id
+[2022-09-16T15:06:49.565] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:07:12.627] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:07:31.910] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:07:59.607] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Ingrese un UUID valido: {subscriber_id
+[2022-09-16T15:08:55.297] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:09:10.766] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:09:18.852] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:09:32.452] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:09:48.830] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:10:44.706] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:10:57.845] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:11:03.088] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:11:08.824] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:11:14.953] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:13:50.107] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:14:20.379] [WARN] default - getSubscriberSuscriptionCommProduct: No se ingreso subscriber_id
+[2022-09-16T15:14:55.340] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:15:49.049] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:16:27.097] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:17:57.919] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:19:19.625] [WARN] default - ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados
+[2022-09-16T15:23:40.036] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:23:48.635] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:24:04.841] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-16T15:25:28.633] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok

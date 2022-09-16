@@ -29,7 +29,7 @@
 		"url": "https://accounts.errepar.com/customers-and-products-api/api",
 		"description": "Server publico (Testing)"
 	  },{
-		"url": "http://localhost:3001/api",
+		"url": "http://localhost:3000/api",
 		"description": "Server testing local"
 	  }],
 	"tags": [
@@ -51,6 +51,22 @@
 					"application/xml",
 					"application/json"
 				],
+				"parameters": [
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Establece cuantos registros deben saltearse.",
+					"required": true,
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "size",
+					"description": "Establece el limite de registros que se deben devolver",
+					"required": true,
+					"type": "integer"
+				}
+				],
 				"responses": {
 					"200": {
 						"description": "Retorna los registros de los Productos."
@@ -58,7 +74,7 @@
 				}
 			}
 		},
-		"/getSubscriberSuscriptionCommProduct/{subscriber_id}": {
+		"/getSubscriberSuscriptionCommProduct/{subscriber_id}?": {
 			"get": {
 				"tags": [
 					"Products"
@@ -74,9 +90,52 @@
 					{
 						"name": "subscriber_id",
 						"in": "path",
-						"description": "subscriber_id del suscriptor que se desea buscar.",
+						"description": "UUID del suscriptor que se desea actualizar.",
 						"required": true,
-						"type": "UUID"
+						"type": "string",
+						"format": "uuid"
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"description": "Establece cuantos registros deben saltearse.",
+						"required": false,
+						"type": "integer"
+					},
+					{
+						"in": "query",
+						"name": "size",
+						"description": "Establece el limite de registros que se deben devolver",
+						"required": false,
+						"type": "integer"
+					},
+					{
+						"in": "query",
+						"name": "subscription_start_date",
+						"description": "Establece la fecha Desde",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "subscription_finish_date",
+						"description": "Establece la fecha Hasta",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "is_active",
+						"description": "Establece si la suscripcion esta activa",
+						"required": false,
+						"type": "boolean"
+					},
+					{
+						"in": "query",
+						"name": "product_id",
+						"description": "Especifica el UUID del producto",
+						"required": false,
+						"type": "uuid"
 					}
 				],
 				"responses": {
