@@ -249,3 +249,32 @@
 [2022-09-16T15:23:48.635] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
 [2022-09-16T15:24:04.841] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
 [2022-09-16T15:25:28.633] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-19T10:51:57.970] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T10:52:48.658] [WARN] default - addSubscriptionCommProduct: Fecha de finalizacion de suscripcion invalida
+[2022-09-19T10:53:02.993] [WARN] default - addSubscriptionCommProduct: Fecha de finalizacion de suscripcion invalida
+[2022-09-19T10:53:11.082] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-19T11:17:40.628] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T11:17:48.926] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T11:20:28.959] [WARN] default - getProductCommProduct: No se ingreso product_code
+[2022-09-19T11:20:48.311] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:21:03.481] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T11:21:10.452] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-19T11:23:00.023] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T11:23:09.131] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:23:13.122] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:23:14.640] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:23:35.545] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:24:20.300] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:24:35.569] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-19T11:24:43.846] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:25:05.454] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T11:25:23.873] [INFO] default - ProductScope: getBySuscriptionProductIdCommProduct ok
+[2022-09-19T11:25:38.733] [WARN] default - ProductScope: getProductCommProduct: Datos no encontrados
+[2022-09-19T11:30:05.814] [INFO] default - ProductScope: getSubscriberSuscriptionCommProduct ok
+[2022-09-19T11:30:40.804] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-19T11:32:38.064] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-19T11:32:44.108] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-19T11:33:00.079] [INFO] default - ProductScope: updateProductCommProduct ok
+[2022-09-19T11:35:56.572] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_type_code" has invalid "undefined" value
+[2022-09-19T11:37:26.028] [INFO] default - ProductScope: getAllProductsCommProduct ok
+[2022-09-19T11:47:43.142] [WARN] default - ProductScope: createProductCommProduct - Producto ya existente 21220293
