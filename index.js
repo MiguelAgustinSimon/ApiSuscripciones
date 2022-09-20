@@ -9,3 +9,4 @@ const server = new Server();
 server.listen(8000, '0.0.0.0');
 
 //Arrancar api: npm run serve
+//Swagger Prod: https://accounts.errepar.com/customers-and-products-api/api-docs/
