@@ -470,7 +470,7 @@ const addSubscriptionCommProduct = async (req, res) => {
     }).then(productSubscription=>{
         if(productSubscription){
             logger.info(`ProductScope: addSubscriptionCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Item creado',productSubscription});
+            return res.status(201).json({ok:true,mensaje:'Item creado',productSubscription});
         }
         else{
           logger.warn(`ProductScope: addSubscriptionCommProduct: El Item no pudo ser creado`);
