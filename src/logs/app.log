@@ -278,3 +278,19 @@
 [2022-09-19T11:35:56.572] [ERROR] default - ProductScope: updateProductCommProduct error: WHERE parameter "product_type_code" has invalid "undefined" value
 [2022-09-19T11:37:26.028] [INFO] default - ProductScope: getAllProductsCommProduct ok
 [2022-09-19T11:47:43.142] [WARN] default - ProductScope: createProductCommProduct - Producto ya existente 21220293
+[2022-09-19T16:02:56.548] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-19T16:03:08.830] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-19T16:03:13.250] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T16:03:22.556] [INFO] default - ProductScope: getProducts ok
+[2022-09-19T16:03:45.712] [INFO] default - ProductScope: addSubscriptionCommProduct ok
+[2022-09-20T12:33:32.887] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-20T12:33:53.196] [INFO] default - ProductScope: getProducts ok
+[2022-09-20T12:34:00.331] [INFO] default - ProductScope: getProducts ok
+[2022-09-20T12:34:19.771] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-20T12:34:34.122] [WARN] default - addSubscriptionCommProduct: Datos previeamente cargados: [object SequelizeInstance:product_subscription]
+[2022-09-20T12:34:57.073] [INFO] default - ProductScope: addSubscriptionCommProduct ok
+[2022-09-20T14:56:46.079] [WARN] default - ProductScope: addSubscriptionCommProduct: Ingrese un UUID valido: bc92f961-185d-467b-8fe8-858f9d5386a
+[2022-09-20T14:59:11.657] [INFO] default - ProductScope: getProductCommProduct ok
+[2022-09-20T14:59:53.647] [WARN] default - ProductScope: createProductCommProduct - Producto ya existente 21220293
+[2022-09-20T15:03:33.301] [WARN] default - ProductScope: createProductCommProduct - Producto ya existente 21220293
+[2022-09-20T15:04:59.990] [WARN] default - addSubscriptionCommProduct: Ya existe una suscripción para el producto y suscriptor informados: [object SequelizeInstance:product_subscription]

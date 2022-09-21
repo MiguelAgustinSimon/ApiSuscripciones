@@ -404,6 +404,16 @@ const addSubscriptionCommProduct = async (req, res) => {
     var validaStartDate = moment(subscription_start_date);
     var validaFinishDate = moment(subscription_finish_date);
 
+
+    if(!UUIDChecker(subscriber_id)){
+        logger.warn(`ProductScope: addSubscriptionCommProduct: Ingrese un UUID valido: ${subscriber_id}`);
+        return res.status(400).json({message: 'Ingrese un UUID valido'});
+    }
+    if(!UUIDChecker(product_id)){
+        logger.warn(`ProductScope: addSubscriptionCommProduct: Ingrese un UUID valido: ${product_id}`);
+        return res.status(400).json({message: 'Ingrese un UUID valido'});
+    }
+
     //verifico si existe el suscriptor
     const suscriptor = await modeloSubscriber.findByPk(subscriber_id);
     //verifico si existe el producto
@@ -441,8 +451,8 @@ const addSubscriptionCommProduct = async (req, res) => {
       
       //Si ya existe devolvemos el resultado
       if(existeSuscripcion){
-        logger.warn(`addSubscriptionCommProduct: Datos previeamente cargados: ${existeSuscripcion}`);
-        return res.status(409).json({message: "Datos previeamente cargados."});
+        logger.warn(`addSubscriptionCommProduct: Ya existe una suscripción para el producto y suscriptor informados: ${existeSuscripcion}`);
+        return res.status(200).json({message: "Ya existe una suscripción para el producto y suscriptor informados."});
       }
 
       //que la fecha que ingresan no sea menor a la de hoy, ver: https://desarrolladores.me/2020/03/manipular-fechas-con-moment-js/
@@ -460,7 +470,7 @@ const addSubscriptionCommProduct = async (req, res) => {
     }).then(productSubscription=>{
         if(productSubscription){
             logger.info(`ProductScope: addSubscriptionCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Item creado',productSubscription});
+            return res.status(201).json({ok:true,mensaje:'Item creado',productSubscription});
         }
         else{
           logger.warn(`ProductScope: addSubscriptionCommProduct: El Item no pudo ser creado`);
