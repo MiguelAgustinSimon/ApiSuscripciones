@@ -452,7 +452,7 @@ const addSubscriptionCommProduct = async (req, res) => {
       //Si ya existe devolvemos el resultado
       if(existeSuscripcion){
         logger.warn(`addSubscriptionCommProduct: Ya existe una suscripción para el producto y suscriptor informados: ${existeSuscripcion}`);
-        return res.status(409).json({message: "Ya existe una suscripción para el producto y suscriptor informados."});
+        return res.status(200).json({message: "Ya existe una suscripción para el producto y suscriptor informados."});
       }
 
       //que la fecha que ingresan no sea menor a la de hoy, ver: https://desarrolladores.me/2020/03/manipular-fechas-con-moment-js/
