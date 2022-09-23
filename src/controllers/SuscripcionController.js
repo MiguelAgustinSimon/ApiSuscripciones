@@ -179,7 +179,7 @@ const getSubscriberSuscriptionCommProduct= async (req, res) => {
         if (data.length===0) 
         { 
             logger.warn(`ProductScope: getSubscriberSuscriptionCommProduct: Datos no encontrados`);
-            return res.status(404).json({message: "Datos no encontrados."})
+            return res.status(204).json({message: "Datos no encontrados."});
         }
         else{
             logger.info(`ProductScope: getSubscriberSuscriptionCommProduct ok`);
@@ -445,7 +445,8 @@ const addSubscriptionCommProduct = async (req, res) => {
     const existeSuscripcion = await modeloProductoSuscripcion.findOne({
         where: {
           subscriber_id: subscriber_id,
-          product_id: product_id
+          product_id: product_id,
+          is_active:true
         }
       });
       
@@ -574,7 +575,7 @@ const createProductScopeCommProduct = async (req, res) => {
         const _producto = await modeloProducto.findByPk(product_id)
         .then(_producto=>{
             if(!_producto){
-                return res.status(200).json({message: "Producto no encontrado"});
+                return res.status(400).json({message: "Producto no encontrado"});
             }
         }).catch((err) => res.status(404).json({message: "Producto no encontrado"}));
 
@@ -588,7 +589,7 @@ const createProductScopeCommProduct = async (req, res) => {
         })
         if(_productScope){
             logger.warn(`ProductScope: createProductScopeCommProduct - Ya existe un alcance de producto activo para el id producto informado ${product_id}`);
-            return res.status(400).json({message: "Ya existe un alcance de producto activo para el id producto informado"});
+            return res.status(200).json({message: "Ya existe un alcance de producto activo para el id producto informado"});
         }
 
       const createProductScope = await modeloProductScope.create({
@@ -601,7 +602,7 @@ const createProductScopeCommProduct = async (req, res) => {
       }).then(prodScope=>{
         if(prodScope){
             logger.info(`ProductScope: createProductScopeCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Alcance de Producto creado',prodScope});
+            return res.status(201).json({ok:true,mensaje:'Alcance de Producto creado',prodScope});
         }
         else{
             logger.warn(`ProductScope: createProductScopeCommProduct: El Item no pudo ser creado`);
@@ -835,7 +836,7 @@ const updateProductScopeCommProduct = async (req, res) => {
     }
 
     if(!is_active){
-        is_active=1;
+        return res.status(400).json({message: "El campo is_active no fue informado"})
     }
 
     await modeloProductScope.findOne({
