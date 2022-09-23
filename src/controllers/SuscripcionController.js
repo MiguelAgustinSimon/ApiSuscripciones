@@ -646,7 +646,7 @@ const disableSubscriptionCommProduct = async (req, res) => {
     
 
     await modeloProductoSuscripcion.findOne({
-        where:{subscriber_id:subscriber_id, product_id:product_id}
+        where:{subscriber_id:subscriber_id, product_id:product_id, is_active:true}
     }).then(modeloProductoSuscripcion=>{
         if(modeloProductoSuscripcion){
                 modeloProductoSuscripcion.update({
