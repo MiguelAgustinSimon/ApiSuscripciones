@@ -512,7 +512,7 @@ const createProductCommProduct = async (req, res) => {
         })
         if(_product){
           logger.warn(`ProductScope: createProductCommProduct - Producto ya existente ${product_code}`);
-          return res.status(400).json({message: "Producto ya existente"});
+          return res.status(200).json({message: "Producto ya existente"});
         }
 
         //Verificar si existe un ProductType con product_type_code informado
@@ -540,7 +540,7 @@ const createProductCommProduct = async (req, res) => {
       }).then(producto=>{
         if(producto){
             logger.info(`ProductScope: createProductCommProduct ok`);
-            return res.status(200).json({ok:true,mensaje:'Producto creado',producto});
+            return res.status(201).json({ok:true,mensaje:'Producto creado',producto});
         }
         else{
           logger.warn(`ProductScope: createProductCommProduct: El producto no pudo ser creado`);
@@ -655,7 +655,7 @@ const disableSubscriptionCommProduct = async (req, res) => {
                     modification_user:req2.idpData.email
                 }).then(result=>{
                     logger.info(`ProductScope: disableSubscriptionCommProduct ok`);
-                    return res.status(200).json({
+                    return res.status(201).json({
                         //ok:true,
                         message:'Producto actualizado exitosamente',
                         result
@@ -761,7 +761,7 @@ try
                     modification_date:fechaHoy
                 }).then(result=>{
                     logger.info(`ProductScope: updateProductCommProduct ok`);
-                    return res.status(200).json({
+                    return res.status(201).json({
                         //ok:true,
                         message:'Producto actualizado exitosamente',
                         result
@@ -804,7 +804,6 @@ try
 //Modificar Product Scope 
 const updateProductScopeCommProduct = async (req, res) => {
     const {product_scope_id}=req.params;
-
     let fechaHoy= moment();
     const request = {
         product_id,
@@ -823,7 +822,7 @@ const updateProductScopeCommProduct = async (req, res) => {
         logger.warn(`ProductScope: updateProductScopeCommProduct: Ingrese un UUID valido: ${product_scope_id}`);
         return res.status(400).json({message: 'Ingrese un UUID valido'});
     }
-
+ 
     var validaStartDate = moment(scope_start_date);
     var validaFinishDate = moment(scope_finish_date);
     if(!validaStartDate.isValid() || validaStartDate>=fechaHoy){
@@ -855,11 +854,11 @@ const updateProductScopeCommProduct = async (req, res) => {
                 if(prodScope){
                     //updatePTIDenProduct(body.product_type_code,body.product_id);
                     logger.info(`ProductScope: updateProductScopeCommProduct ok`);
-                    return res.status(200).json({ok:true,mensaje:'Alcance de Producto modificado',prodScope});
+                    return res.status(201).json({ok:true,mensaje:'Alcance de Producto modificado',prodScope});
                 }
                 else{
                   logger.warn(`ProductScope: updateProductScopeCommProduct: El Alcance de este producto no pudo ser modificado`);
-                  return res.json({
+                  return res.status(400).json({
                       ok:false,
                       message:'El Alcance de este producto no pudo ser modificado'
                   })
