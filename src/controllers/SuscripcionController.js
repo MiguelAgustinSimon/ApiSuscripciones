@@ -428,7 +428,7 @@ const addSubscriptionCommProduct = async (req, res) => {
         logger.warn(`addSubscriptionCommProduct: No se ingreso product_id`);
         return res.status(400).json({message: "No se ingreso producto para el suscriptor o este es inexistente"})
     }
-    if(!validaStartDate.isValid() || validaStartDate>=fechaHoy){
+    if(!validaStartDate.isValid() ){//|| validaStartDate>=fechaHoy){ preguntar que hacemos con esto
         logger.warn(`addSubscriptionCommProduct: Fecha de inicio de suscripcion invalida`);
         return res.status(400).json({message: "Fecha de inicio de suscripcion invalida"})
     }
