@@ -432,11 +432,15 @@ const addSubscriptionCommProduct = async (req, res) => {
         logger.warn(`addSubscriptionCommProduct: Fecha de inicio de suscripcion invalida`);
         return res.status(400).json({message: "Fecha de inicio de suscripcion invalida"})
     }
-    if(!validaFinishDate.isValid() || validaFinishDate<=fechaHoy){
+    if(!validaFinishDate.isValid()){
         logger.warn(`addSubscriptionCommProduct: Fecha de finalizacion de suscripcion invalida`);
         return res.status(400).json({message: "Fecha de finalizacion de suscripcion invalida"})
     }
-    
+    if(validaStartDate>validaFinishDate){
+        logger.warn(`addSubscriptionCommProduct: Fecha de inicio mayor a la fecha de fin`);
+        return res.status(400).json({message: "Fecha de inicio mayor a la fecha de fin"})
+    }
+
     if(!account_executive_ref_id){
         account_executive_ref_id=1;
     }
