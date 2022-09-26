@@ -442,7 +442,7 @@ const addSubscriptionCommProduct = async (req, res) => {
     }
 
     if(!account_executive_ref_id){
-        account_executive_ref_id=1;
+        account_executive_ref_id=0;
     }
 
     //Verificamos si la relacion ya existe
